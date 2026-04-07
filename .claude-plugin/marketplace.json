@@ -1,5 +1,5 @@
 {
-  "name": "the-cabinet",
+  "name": "the-cabinet-marketplace",
   "owner": {
     "name": "Shaan Agara",
     "url": "https://github.com/shaan-ad"
@@ -8,8 +8,10 @@
     {
       "name": "the-cabinet",
       "description": "26 AI executive personas for leadership decisions. Every leader needs a cabinet.",
-      "source": ".",
-      "version": "1.0.0",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/shaan-ad/the-cabinet.git"
+      },
       "category": "productivity",
       "homepage": "https://github.com/shaan-ad/the-cabinet"
     }
