@@ -1,0 +1,22 @@
+{
+  "name": "the-cabinet",
+  "description": "30+ AI executive personas for Claude Code. Every leader needs a cabinet. Point any decision at The Cabinet and get perspectives from every leadership angle.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Shaan Agara",
+    "url": "https://github.com/shaan-ad"
+  },
+  "homepage": "https://github.com/shaan-ad/the-cabinet",
+  "repository": "https://github.com/shaan-ad/the-cabinet",
+  "license": "MIT",
+  "keywords": [
+    "claude-code",
+    "ai-agents",
+    "leadership",
+    "executives",
+    "personas",
+    "startup",
+    "c-suite",
+    "decision-making"
+  ]
+}
