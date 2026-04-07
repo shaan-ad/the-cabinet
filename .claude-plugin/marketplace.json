@@ -1,0 +1,17 @@
+{
+  "name": "the-cabinet",
+  "owner": {
+    "name": "Shaan Agara",
+    "url": "https://github.com/shaan-ad"
+  },
+  "plugins": [
+    {
+      "name": "the-cabinet",
+      "description": "26 AI executive personas for leadership decisions. Every leader needs a cabinet.",
+      "source": ".",
+      "version": "1.0.0",
+      "category": "productivity",
+      "homepage": "https://github.com/shaan-ad/the-cabinet"
+    }
+  ]
+}

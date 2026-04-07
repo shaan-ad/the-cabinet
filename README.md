@@ -1,6 +1,6 @@
 # The Cabinet
 
-> 26 AI executive personas for Claude Code. Every leader needs a cabinet.
+> 26 AI executive personas for Claude Code and Cowork. Every leader needs a cabinet.
 
 Point any decision, strategy, or problem at The Cabinet and get perspectives from every leadership angle. A CEO who challenges your vision. A CFO who demands the numbers. A Reality Checker who tears apart your assumptions.
 
@@ -8,11 +8,27 @@ Pure markdown. Zero code. Install in one command.
 
 ## Install
 
+### Claude Code (CLI)
+
 ```bash
-claude plugin install shaan-ad/the-cabinet
+claude plugin marketplace add shaan-ad/the-cabinet
+claude plugin install the-cabinet@the-cabinet
 ```
 
-Also works with Cursor, Aider, Windsurf, and any tool that reads markdown system prompts.
+### Claude Cowork (Desktop / Web)
+
+1. Open Cowork and go to **Customize** in the sidebar
+2. Select **Browse plugins** or add a custom plugin
+3. Add the GitHub source: `shaan-ad/the-cabinet`
+4. Click **Install**
+
+### VS Code / JetBrains
+
+Type `/plugins` in the Claude Code panel, add `shaan-ad/the-cabinet` as a marketplace source, then install from the GUI.
+
+### No plugin system? Just use the markdown.
+
+Every persona is a standalone `.md` file. Open any file in `cabinet/`, `startup/`, or `advisors/`, copy the content, and paste it as a system prompt in ChatGPT, Gemini, Cowork, or any AI tool.
 
 ---
 
