@@ -17,11 +17,12 @@ claude plugin install the-cabinet@the-cabinet
 
 ### Claude Cowork (Desktop / Web)
 
-1. Open Cowork and go to **Customize** in the sidebar
-2. Click the **+** next to Personal plugins
-3. Select **Create plugin** > **Add marketplace**
-4. Enter `shaan-ad/the-cabinet` as the marketplace source
-5. Install The Cabinet from your personal plugins
+1. Open any persona file from `cabinet/`, `startup/`, or `advisors/` on GitHub
+2. Copy the markdown content
+3. In Cowork, go to **Customize** > **Create new skills**
+4. Paste the persona as a custom skill
+
+Repeat for as many personas as you want in your cabinet.
 
 ### VS Code / JetBrains
 
