@@ -17,12 +17,10 @@ claude plugin install the-cabinet@the-cabinet
 
 ### Claude Cowork (Desktop / Web)
 
-1. Open any persona file from `cabinet/`, `startup/`, or `advisors/` on GitHub
-2. Copy the markdown content
-3. In Cowork, go to **Customize** > **Create new skills**
-4. Paste the persona as a custom skill
-
-Repeat for as many personas as you want in your cabinet.
+1. [Download the plugin zip](https://github.com/shaan-ad/the-cabinet/archive/refs/heads/main.zip)
+2. In Cowork, go to **Customize** > **+** next to Personal plugins
+3. Select **Create plugin** > **Upload plugin**
+4. Upload the zip file
 
 ### VS Code / JetBrains
 
