@@ -17,10 +17,10 @@ claude plugin install the-cabinet@the-cabinet
 
 ### Claude Cowork (Desktop / Web)
 
-1. Open Cowork and go to **Customize** in the sidebar
-2. Select **Browse plugins** or add a custom plugin
-3. Add the GitHub source: `shaan-ad/the-cabinet`
-4. Click **Install**
+1. Open Cowork and go to **Custom** in the sidebar
+2. Add a custom plugin from the GitHub URL: `https://github.com/shaan-ad/the-cabinet`
+
+Or simply copy any persona's markdown from the `cabinet/`, `startup/`, or `advisors/` folders and paste it into your Cowork project instructions.
 
 ### VS Code / JetBrains
 
