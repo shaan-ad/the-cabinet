@@ -1,0 +1,1518 @@
+# The Cabinet Landing Page Implementation Plan
+
+> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
+
+**Goal:** Build a single self-contained HTML landing page for The Cabinet (26 AI executive personas for Claude Code) with bold editorial dark theme, tabbed persona grid with inline expand, and install CTAs.
+
+**Architecture:** Single `index.html` file with all CSS and JS inline. One external asset (`assets/headshot.jpg`). No build step, no dependencies. Persona data hardcoded from the markdown files in the repo.
+
+**Tech Stack:** HTML, CSS (inline), vanilla JavaScript (inline). SVG icons (inline). GitHub Pages compatible.
+
+**Spec:** `docs/superpowers/specs/2026-04-07-landing-page-design.md`
+
+---
+
+## File Structure
+
+```
+the-cabinet/
+  index.html              # CREATE - The landing page (all CSS/JS inline)
+  assets/
+    headshot.jpg           # CREATE - Copy author headshot
+```
+
+Everything lives in `index.html`. The file will be structured as:
+1. `<style>` block with all CSS (design system, layout, components, responsive)
+2. `<body>` with semantic sections (hero, explainer, personas, how-it-works, comparison, footer)
+3. `<script>` block at the end with tab switching, card expand/collapse, copy-to-clipboard
+
+---
+
+### Task 1: Scaffold HTML + CSS Design System + Hero Section
+
+**Files:**
+- Create: `index.html`
+- Create: `assets/headshot.jpg` (copy from source)
+
+- [ ] **Step 1: Copy headshot asset**
+
+```bash
+mkdir -p assets
+cp "/Users/agaras/Desktop/Studio Edits/Shaan-Agara.jpeg" assets/headshot.jpg
+```
+
+- [ ] **Step 2: Create index.html with full CSS design system and Hero section**
+
+Create `index.html` with the complete `<style>` block and the Hero section. The CSS covers the entire page (all sections), so it only needs to be written once.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Cabinet - 26 AI Executive Personas for Claude Code</title>
+<meta name="description" content="26 AI executive personas for Claude Code. Every leader needs a cabinet. Get perspectives from every leadership angle.">
+<style>
+  /* ===== RESET & BASE ===== */
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: #0a0a0a;
+    color: #e2e8f0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ===== LAYOUT ===== */
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+  /* ===== HERO ===== */
+  .hero {
+    min-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 80px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background:
+      radial-gradient(ellipse at 30% 50%, rgba(124,58,237,0.15), transparent 50%),
+      radial-gradient(ellipse at 70% 50%, rgba(236,72,153,0.1), transparent 50%);
+    animation: hero-drift 8s ease-in-out infinite alternate;
+  }
+  @keyframes hero-drift {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(-30px, 20px); }
+  }
+  .hero-content { position: relative; z-index: 1; max-width: 720px; }
+  .hero h1 {
+    font-size: 72px;
+    font-weight: 800;
+    letter-spacing: -3px;
+    line-height: 1.0;
+    margin-bottom: 20px;
+    background: linear-gradient(135deg, #ffffff 0%, #c4b5fd 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .hero .tagline {
+    font-size: 20px;
+    color: #9ca3af;
+    margin-bottom: 40px;
+    line-height: 1.6;
+  }
+  .hero .tagline strong { color: #c4b5fd; font-weight: 600; }
+
+  /* ===== INSTALL BOX ===== */
+  .install-box {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    background: rgba(139,92,246,0.08);
+    border: 1px solid rgba(139,92,246,0.25);
+    border-radius: 14px;
+    padding: 18px 24px;
+    max-width: 560px;
+    margin: 0 auto 44px;
+    text-align: left;
+  }
+  .install-step {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    transition: opacity 0.2s;
+  }
+  .install-step:hover { opacity: 0.8; }
+  .install-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: #7c3aed;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    min-width: 48px;
+  }
+  .install-cmd {
+    font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+    font-size: 13px;
+    color: #c4b5fd;
+    flex: 1;
+  }
+  .install-copy {
+    color: #7c3aed;
+    font-size: 16px;
+    cursor: pointer;
+    transition: color 0.2s;
+    background: none;
+    border: none;
+    padding: 4px;
+  }
+  .install-copy:hover { color: #a78bfa; }
+  .install-copy.copied { color: #34d399; }
+
+  /* ===== STATS ===== */
+  .stats {
+    display: flex;
+    gap: 48px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .stat { text-align: center; }
+  .stat-num {
+    font-size: 32px;
+    font-weight: 800;
+    color: #a78bfa;
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 12px;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-top: 6px;
+  }
+
+  /* ===== SECTION ===== */
+  .section {
+    padding: 80px 24px;
+  }
+  .section-header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+  .section-title {
+    font-size: 40px;
+    font-weight: 800;
+    letter-spacing: -1.5px;
+    margin-bottom: 12px;
+  }
+  .section-sub {
+    font-size: 18px;
+    color: #9ca3af;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  /* ===== EXPLAINER ===== */
+  .explainer {
+    max-width: 740px;
+    margin: 0 auto;
+    padding: 60px 24px 0;
+    text-align: center;
+  }
+  .explainer p {
+    font-size: 20px;
+    line-height: 1.7;
+    color: #9ca3af;
+  }
+
+  /* ===== TABS ===== */
+  .tabs {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 32px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 12px;
+    padding: 4px;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .tab {
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #9ca3af;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: none;
+    background: none;
+  }
+  .tab:hover { color: #e2e8f0; }
+  .tab.active {
+    background: linear-gradient(135deg, #7c3aed, #6d28d9);
+    color: white;
+  }
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+
+  /* ===== PERSONA GRID ===== */
+  .persona-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  /* ===== PERSONA CARD ===== */
+  .persona-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 14px;
+    padding: 22px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+  }
+  .persona-card:hover {
+    background: rgba(139,92,246,0.06);
+    border-color: rgba(139,92,246,0.25);
+    transform: translateY(-2px);
+  }
+  .persona-card.expanded {
+    background: rgba(139,92,246,0.08);
+    border-color: rgba(139,92,246,0.35);
+  }
+  .persona-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 12px;
+  }
+  .persona-icon {
+    width: 44px;
+    height: 44px;
+    background: rgba(139,92,246,0.1);
+    border-radius: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .persona-icon svg {
+    width: 22px;
+    height: 22px;
+    stroke: #a78bfa;
+    stroke-width: 1.75;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .persona-name {
+    font-size: 17px;
+    font-weight: 700;
+    color: #e2e8f0;
+    line-height: 1.2;
+  }
+  .persona-role {
+    font-size: 12px;
+    color: #a78bfa;
+    margin-top: 2px;
+  }
+  .persona-lens {
+    font-size: 14px;
+    color: #9ca3af;
+    line-height: 1.5;
+    margin-bottom: 14px;
+  }
+  .persona-questions-label {
+    font-size: 10px;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 8px;
+  }
+  .persona-q {
+    font-size: 13px;
+    color: #c4b5fd;
+    padding: 3px 0;
+    line-height: 1.5;
+    font-style: italic;
+  }
+
+  /* ===== EXPANDED CARD CONTENT ===== */
+  .persona-expanded {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease;
+  }
+  .persona-card.expanded .persona-expanded {
+    max-height: 400px;
+  }
+  .persona-expanded-inner {
+    padding-top: 16px;
+    margin-top: 16px;
+    border-top: 1px solid rgba(139,92,246,0.15);
+  }
+  .expanded-label {
+    font-size: 10px;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 8px;
+  }
+  .framework-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 14px;
+  }
+  .framework-tag {
+    background: rgba(139,92,246,0.12);
+    color: #a78bfa;
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 500;
+  }
+  .pushback-text {
+    font-size: 13px;
+    color: #9ca3af;
+    line-height: 1.5;
+    margin-bottom: 14px;
+  }
+  .example-prompt {
+    background: rgba(0,0,0,0.4);
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+    font-size: 13px;
+    color: #c4b5fd;
+  }
+
+  /* ===== HOW IT WORKS ===== */
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    max-width: 900px;
+    margin: 0 auto 48px;
+  }
+  .step {
+    text-align: center;
+    padding: 32px 24px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 14px;
+  }
+  .step-num {
+    font-size: 14px;
+    font-weight: 700;
+    color: #7c3aed;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+  }
+  .step-title {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .step-desc {
+    font-size: 14px;
+    color: #9ca3af;
+    line-height: 1.5;
+  }
+  .step-example {
+    margin-top: 12px;
+    font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+    font-size: 12px;
+    color: #c4b5fd;
+    background: rgba(0,0,0,0.3);
+    padding: 8px 12px;
+    border-radius: 6px;
+    text-align: left;
+  }
+
+  /* Install tabs (how it works section) */
+  .install-tabs {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 20px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 10px;
+    padding: 4px;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .install-tab {
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #9ca3af;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: none;
+    background: none;
+  }
+  .install-tab:hover { color: #e2e8f0; }
+  .install-tab.active {
+    background: rgba(139,92,246,0.2);
+    color: #c4b5fd;
+  }
+  .install-panel { display: none; text-align: center; }
+  .install-panel.active { display: block; }
+  .install-panel code {
+    display: block;
+    background: rgba(0,0,0,0.4);
+    border-radius: 10px;
+    padding: 16px 24px;
+    font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+    font-size: 14px;
+    color: #c4b5fd;
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: left;
+    line-height: 1.8;
+  }
+  .install-panel ol {
+    text-align: left;
+    max-width: 600px;
+    margin: 0 auto;
+    color: #9ca3af;
+    font-size: 14px;
+    line-height: 1.8;
+  }
+  .install-panel p {
+    color: #9ca3af;
+    font-size: 14px;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  /* ===== COMPARISON TABLE ===== */
+  .comparison {
+    max-width: 900px;
+    margin: 0 auto;
+    overflow-x: auto;
+  }
+  .comparison table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+  .comparison th, .comparison td {
+    padding: 16px 20px;
+    text-align: left;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .comparison th {
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #6b7280;
+  }
+  .comparison th:last-child {
+    color: #a78bfa;
+  }
+  .comparison td { color: #9ca3af; }
+  .comparison td:first-child {
+    font-weight: 600;
+    color: #e2e8f0;
+  }
+  .comparison td:last-child {
+    color: #c4b5fd;
+    font-weight: 500;
+  }
+  .comparison tr:hover td {
+    background: rgba(139,92,246,0.04);
+  }
+
+  /* ===== FOOTER ===== */
+  .footer {
+    padding: 40px 24px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    text-align: center;
+  }
+  .footer-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+  }
+  .footer-headshot {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(139,92,246,0.3);
+  }
+  .footer-name {
+    font-size: 15px;
+    font-weight: 600;
+    color: #e2e8f0;
+  }
+  .footer-links {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+    margin-top: 12px;
+  }
+  .footer-links a {
+    font-size: 13px;
+    color: #6b7280;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: #a78bfa; }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 900px) {
+    .hero h1 { font-size: 52px; letter-spacing: -2px; }
+    .persona-grid { grid-template-columns: repeat(2, 1fr); }
+    .steps { grid-template-columns: 1fr; max-width: 400px; }
+    .stats { gap: 32px; }
+  }
+  @media (max-width: 640px) {
+    .hero h1 { font-size: 40px; letter-spacing: -1.5px; }
+    .hero .tagline { font-size: 17px; }
+    .hero { min-height: 70vh; padding: 60px 20px; }
+    .persona-grid { grid-template-columns: 1fr; }
+    .tabs { flex-wrap: wrap; width: 100%; }
+    .tab { flex: 1; text-align: center; font-size: 13px; padding: 10px 12px; }
+    .install-box { padding: 14px 16px; }
+    .install-cmd { font-size: 11px; }
+    .section-title { font-size: 30px; }
+    .stats { gap: 24px; }
+    .stat-num { font-size: 26px; }
+    .install-tabs { flex-wrap: wrap; }
+    .comparison table { font-size: 12px; }
+    .comparison th, .comparison td { padding: 10px 12px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero-content">
+    <h1>The Cabinet</h1>
+    <p class="tagline">26 AI executive personas for Claude Code.<br><strong>Every leader needs a cabinet.</strong></p>
+    <div class="install-box">
+      <div class="install-step" onclick="copyCmd(this)">
+        <span class="install-label">Step 1</span>
+        <span class="install-cmd">claude plugin marketplace add shaan-ad/the-cabinet</span>
+        <button class="install-copy" aria-label="Copy command">&#128203;</button>
+      </div>
+      <div class="install-step" onclick="copyCmd(this)">
+        <span class="install-label">Step 2</span>
+        <span class="install-cmd">claude plugin install the-cabinet</span>
+        <button class="install-copy" aria-label="Copy command">&#128203;</button>
+      </div>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="stat-num">26</div><div class="stat-label">Personas</div></div>
+      <div class="stat"><div class="stat-num">180+</div><div class="stat-label">Questions</div></div>
+      <div class="stat"><div class="stat-num">50+</div><div class="stat-label">Frameworks</div></div>
+      <div class="stat"><div class="stat-num">0</div><div class="stat-label">Lines of Code</div></div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
+```
+
+- [ ] **Step 3: Verify hero renders in browser**
+
+Run: `open index.html` (macOS)
+
+Expected: Dark page with animated purple/pink gradient background. "The Cabinet" in large gradient text. Two-step install box. Stats bar with 26, 180+, 50+, 0.
+
+- [ ] **Step 4: Commit**
+
+```bash
+git add index.html assets/headshot.jpg
+git commit -m "feat: scaffold landing page with CSS design system and hero section"
+```
+
+---
+
+### Task 2: Add Explainer and Persona Grid (Executives Leadership)
+
+**Files:**
+- Modify: `index.html`
+
+- [ ] **Step 1: Add the explainer section and persona grid with Executives Leadership tab content**
+
+Insert after the closing `</section>` of the hero, before `</body>`:
+
+```html
+<!-- ===== EXPLAINER ===== -->
+<div class="explainer">
+  <p>Point any decision, strategy, or problem at The Cabinet and get perspectives from every leadership angle. A CEO who challenges your vision. A CFO who demands the numbers. A Reality Checker who tears apart your assumptions. Pure markdown. Zero code. Install in two commands.</p>
+</div>
+
+<!-- ===== PERSONA GRID ===== -->
+<section class="section">
+  <div class="section-header">
+    <h2 class="section-title">Meet Your Cabinet</h2>
+    <p class="section-sub">Click any persona to see their decision frameworks and signature questions.</p>
+  </div>
+
+  <div class="tabs">
+    <button class="tab active" data-tab="executives">Executives Leadership</button>
+    <button class="tab" data-tab="startup">Startup Cabinet</button>
+    <button class="tab" data-tab="advisors">Startup Advisors</button>
+  </div>
+
+  <!-- EXECUTIVES LEADERSHIP -->
+  <div class="tab-panel active" id="tab-executives">
+    <div class="persona-grid">
+
+      <!-- CEO -->
+      <div class="persona-card" onclick="toggleCard(this)">
+        <div class="persona-header">
+          <div class="persona-icon"><svg viewBox="0 0 24 24"><path d="M12 2L15 8.5L22 9.5L17 14.5L18 21.5L12 18.5L6 21.5L7 14.5L2 9.5L9 8.5L12 2Z"/></svg></div>
+          <div><div class="persona-name">The CEO</div><div class="persona-role">Chief Executive</div></div>
+        </div>
+        <div class="persona-lens">Vision, strategy, and stakeholder alignment. Challenges your thinking on what really matters.</div>
+        <div class="persona-questions-label">Questions they always ask</div>
+        <div class="persona-q">"What would have to be true for this to be a good idea?"</div>
+        <div class="persona-q">"If we say yes to this, what are we saying no to?"</div>
+        <div class="persona-expanded"><div class="persona-expanded-inner">
+          <div class="expanded-label">Frameworks</div>
+          <div class="framework-tags"><span class="framework-tag">Porter's Five Forces</span><span class="framework-tag">2x2 Prioritization</span></div>
+          <div class="expanded-label">Pushes back on</div>
+          <div class="pushback-text">Consensus-seeking that delays action, strategy decks with no trade-offs, vanity metrics</div>
+          <div class="expanded-label">Try it</div>
+          <div class="example-prompt">Run this pricing strategy past the CEO</div>
+        </div></div>
+      </div>
+
+      <!-- CFO -->
+      <div class="persona-card" onclick="toggleCard(this)">
+        <div class="persona-header">
+          <div class="persona-icon"><svg viewBox="0 0 24 24"><path d="M18 20V10M12 20V4M6 20V14"/></svg></div>
+          <div><div class="persona-name">The CFO</div><div class="persona-role">Chief Financial</div></div>
+        </div>
+        <div class="persona-lens">Unit economics, runway, and payback periods. Demands the numbers before any decision moves forward.</div>
+        <div class="persona-questions-label">Questions they always ask</div>
+        <div class="persona-q">"What's the fully-loaded cost, including people-hours?"</div>
+        <div class="persona-q">"If this takes twice as long and costs 50% more, do we still do it?"</div>
+        <div class="persona-expanded"><div class="persona-expanded-inner">
+          <div class="expanded-label">Frameworks</div>
+          <div class="framework-tags"><span class="framework-tag">Three-Scenario Modeling</span><span class="framework-tag">ROI Ranking</span></div>
+          <div class="expanded-label">Pushes back on</div>
+          <div class="pushback-text">Hockey-stick projections with no explanation, conflating revenue with cash</div>
+          <div class="expanded-label">Try it</div>
+          <div class="example-prompt">Have the CFO review our Series A financial model</div>
+        </div></div>
+      </div>
+
+      <!-- CTO -->
+      <div class="persona-card" onclick="toggleCard(this)">
+        <div class="persona-header">
+          <div class="persona-icon"><svg viewBox="0 0 24 24"><path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1Z"/></svg></div>
+          <div><div class="persona-name">The CTO</div><div class="persona-role">Chief Technology</div></div>
+        </div>
+        <div class="persona-lens">Systems thinking, tech debt, and build vs buy. Keeps the technical vision honest and scalable.</div>
+        <div class="persona-questions-label">Questions they always ask</div>
+        <div class="persona-q">"What's the blast radius if this fails?"</div>
+        <div class="persona-q">"Is this essential complexity, or accidental?"</div>
+        <div class="persona-expanded"><div class="persona-expanded-inner">
+          <div class="expanded-label">Frameworks</div>
+          <div class="framework-tags"><span class="framework-tag">Three Horizons of Regret</span><span class="framework-tag">Boring Technology</span></div>
+          <div class="expanded-label">Pushes back on</div>
+          <div class="pushback-text">Resume-driven development, rewrites without a business case, premature optimization</div>
+          <div class="expanded-label">Try it</div>
+          <div class="example-prompt">Ask the CTO to review our architecture decision</div>
+        </div></div>
+      </div>
+
+      <!-- CMO -->
+      <div class="persona-card" onclick="toggleCard(this)">
+        <div class="persona-header">
+          <div class="persona-icon"><svg viewBox="0 0 24 24"><path d="M3 11l18-5v12L3 13v-2Z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg></div>
+          <div><div class="persona-name">The CMO</div><div class="persona-role">Chief Marketing</div></div>
+        </div>
+        <div class="persona-lens">Positioning, demand generation, and buyer psychology. Makes sure the story lands with the right audience.</div>
+        <div class="persona-questions-label">Questions they always ask</div>
+        <div class="persona-q">"Who is the buyer, and what trigger makes them look?"</div>
+        <div class="persona-q">"What do we want the market to believe that they don't?"</div>
+        <div class="persona-expanded"><div class="persona-expanded-inner">
+          <div class="expanded-label">Frameworks</div>
+          <div class="framework-tags"><span class="framework-tag">Dunford Positioning</span><span class="framework-tag">Byron Sharp</span></div>
+          <div class="expanded-label">Pushes back on</div>
+          <div class="pushback-text">Feature-led messaging, launching without a clear ICP</div>
+          <div class="expanded-label">Try it</div>
+          <div class="example-prompt">Get the CMO's take on our launch messaging</div>
+        </div></div>
+      </div>
+
+      <!-- COO -->
+      <div class="persona-card" onclick="toggleCard(this)">
+        <div class="persona-header">
+          <div class="persona-icon"><svg viewBox="0 0 24 24"><path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3"/><path d="M1 14h6M9 8h6M17 16h6"/></svg></div>
+          <div><div class="persona-name">The COO</div><div class="persona-role">Chief Operations</div></div>
+        </div>
+        <div class="persona-lens">Bottlenecks, handoffs, and capacity analysis. Turns strategy into repeatable execution systems.</div>
+        <div class="persona-questions-label">Questions they always ask</div>
+        <div class="persona-q">"Who owns the handoff between these two teams?"</div>
+        <div class="persona-q">"If we doubled volume tomorrow, which process breaks first?"</div>
+        <div class="persona-expanded"><div class="persona-expanded-inner">
+          <div class="expanded-label">Frameworks</div>
+          <div class="framework-tags"><span class="framework-tag">Theory of Constraints</span><span class="framework-tag">Process-People-Tools</span></div>
+          <div class="expanded-label">Pushes back on</div>
+          <div class="pushback-text">Adding headcount before fixing the process, celebrating heroics instead of systems</div>
+          <div class="expanded-label">Try it</div>
+          <div class="example-prompt">Have the COO audit our onboarding workflow</div>
+        </div></div>
+      </div>
+
+      <!-- CPO -->
+      <div class="persona-card" onclick="toggleCard(this)">
+        <div class="persona-header">
+          <div class="persona-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
+          <div><div class="persona-name">The CPO</div><div class="persona-role">Chief Product</div></div>
+        </div>
+        <div class="persona-lens">User problems, prioritization, and continuous product-market fit. Relentlessly focused on what users actually need.</div>
+        <div class="persona-questions-label">Questions they always ask</div>
+        <div class="persona-q">"What user problem are we solving, and how do we know it's real?"</div>
+        <div class="persona-q">"What's the smallest version that lets us learn?"</div>
+        <div class="persona-expanded"><div class="persona-expanded-inner">
+          <div class="expanded-label">Frameworks</div>
+          <div class="framework-tags"><span class="framework-tag">Modified RICE</span><span class="framework-tag">Opportunity Solution Tree</span><span class="framework-tag">Kano Model</span></div>
+          <div class="expanded-label">Pushes back on</div>
+          <div class="pushback-text">Solutions disguised as problems, roadmaps as feature lists, skipping discovery</div>
+          <div class="expanded-label">Try it</div>
+          <div class="example-prompt">Ask the CPO to prioritize our backlog</div>
+        </div></div>
+      </div>
+
+      <!-- CHRO -->
+      <div class="persona-card" onclick="toggleCard(this)">
+        <div class="persona-header">
+          <div class="persona-icon"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+          <div><div class="persona-name">The CHRO</div><div class="persona-role">Chief People</div></div>
+        </div>
+        <div class="persona-lens">Org health, hiring quality, and retention signals. Builds culture through decisions, not perks.</div>
+        <div class="persona-questions-label">Questions they always ask</div>
+        <div class="persona-q">"If this person left tomorrow, what would break?"</div>
+        <div class="persona-q">"Are we hiring for the role we need in 12 months?"</div>
+        <div class="persona-expanded"><div class="persona-expanded-inner">
+          <div class="expanded-label">Frameworks</div>
+          <div class="framework-tags"><span class="framework-tag">Lencioni's Five Dysfunctions</span><span class="framework-tag">"Who" Scorecards</span></div>
+          <div class="expanded-label">Pushes back on</div>
+          <div class="pushback-text">Hiring for speed over quality, promoting ICs into management without training, culture as perks</div>
+          <div class="expanded-label">Try it</div>
+          <div class="example-prompt">Ask the CHRO about our hiring strategy</div>
+        </div></div>
+      </div>
+
+      <!-- General Counsel -->
+      <div class="persona-card" onclick="toggleCard(this)">
+        <div class="persona-header">
+          <div class="persona-icon"><svg viewBox="0 0 24 24"><path d="M12 3v18"/><path d="M5 6l7-3 7 3"/><path d="M5 6v6c0 1.5-2 3-2 3h4s-2-1.5-2-3V6Z"/><path d="M19 6v6c0 1.5 2 3 2 3h-4s2-1.5 2-3V6Z"/></svg></div>
+          <div><div class="persona-name">General Counsel</div><div class="persona-role">Legal</div></div>
+        </div>
+        <div class="persona-lens">Risk translation, contract infrastructure, IP protection, and compliance.</div>
+        <div class="persona-questions-label">Questions they always ask</div>
+        <div class="persona-q">"If this goes wrong, what's the worst-case financial exposure?"</div>
+        <div class="persona-q">"What precedent does this set?"</div>
+        <div class="persona-expanded"><div class="persona-expanded-inner">
+          <div class="expanded-label">Frameworks</div>
+          <div class="framework-tags"><span class="framework-tag">Probability-Impact Matrix</span><span class="framework-tag">Contract Position Tiers</span></div>
+          <div class="expanded-label">Pushes back on</div>
+          <div class="pushback-text">Verbal agreements, skipping legal review to "move fast," open-source without license review</div>
+          <div class="expanded-label">Try it</div>
+          <div class="example-prompt">Have General Counsel review this partnership agreement</div>
+        </div></div>
+      </div>
+
+      <!-- Chief of Staff -->
+      <div class="persona-card" onclick="toggleCard(this)">
+        <div class="persona-header">
+          <div class="persona-icon"><svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></div>
+          <div><div class="persona-name">Chief of Staff</div><div class="persona-role">Execution</div></div>
+        </div>
+        <div class="persona-lens">Decision hygiene, cross-functional gaps, and execution follow-through.</div>
+        <div class="persona-questions-label">Questions they always ask</div>
+        <div class="persona-q">"Has this decision been communicated to people who need to act?"</div>
+        <div class="persona-q">"Are we aligned, or are we just being polite?"</div>
+        <div class="persona-expanded"><div class="persona-expanded-inner">
+          <div class="expanded-label">Frameworks</div>
+          <div class="framework-tags"><span class="framework-tag">Five-Point Decision Docs</span><span class="framework-tag">Meeting Taxonomy</span></div>
+          <div class="expanded-label">Pushes back on</div>
+          <div class="pushback-text">Meetings without agendas, action items without owners, strategy without follow-through</div>
+          <div class="expanded-label">Try it</div>
+          <div class="example-prompt">Ask the Chief of Staff to audit our decision process</div>
+        </div></div>
+      </div>
+
+      <!-- Board Advisor -->
+      <div class="persona-card" onclick="toggleCard(this)">
+        <div class="persona-header">
+          <div class="persona-icon"><svg viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/><path d="M9 9h1M9 13h1M9 17h1"/></svg></div>
+          <div><div class="persona-name">Board Advisor</div><div class="persona-role">Governance</div></div>
+        </div>
+        <div class="persona-lens">Promises vs performance, capital allocation, and risk oversight.</div>
+        <div class="persona-questions-label">Questions they always ask</div>
+        <div class="persona-q">"If I were an outside investor, what would concern me?"</div>
+        <div class="persona-q">"Which assumption, if wrong, most changes the outcome?"</div>
+        <div class="persona-expanded"><div class="persona-expanded-inner">
+          <div class="expanded-label">Frameworks</div>
+          <div class="framework-tags"><span class="framework-tag">Promises vs Performance</span><span class="framework-tag">Buffett Capital Allocation</span></div>
+          <div class="expanded-label">Pushes back on</div>
+          <div class="pushback-text">Narrative drift, vanity metrics in board decks, expansion without proving the core</div>
+          <div class="expanded-label">Try it</div>
+          <div class="example-prompt">Get the Board Advisor's take on our annual plan</div>
+        </div></div>
+      </div>
+
+    </div>
+  </div>
+```
+
+- [ ] **Step 2: Verify in browser**
+
+Run: `open index.html`
+
+Expected: Explainer text below hero. "Meet Your Cabinet" section with 3 tabs. Executives Leadership tab active showing 10 persona cards in a 3-column grid. Cards show icon, name, role, lens, and 2 questions.
+
+- [ ] **Step 3: Commit**
+
+```bash
+git add index.html
+git commit -m "feat: add explainer and executives leadership persona grid"
+```
+
+---
+
+### Task 3: Add Startup Cabinet and Startup Advisors Tabs
+
+**Files:**
+- Modify: `index.html`
+
+- [ ] **Step 1: Add Startup Cabinet tab panel**
+
+Insert after the closing `</div>` of `tab-executives`, before the eventual closing of the section:
+
+```html
+  <!-- STARTUP CABINET -->
+  <div class="tab-panel" id="tab-startup">
+    <div class="persona-grid">
+
+      <!-- Technical Cofounder -->
+      <div class="persona-card" onclick="toggleCard(this)">
+        <div class="persona-header">
+          <div class="persona-icon"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76Z"/></svg></div>
+          <div><div class="persona-name">Technical Cofounder</div><div class="persona-role">Engineering</div></div>
+        </div>
+        <div class="persona-lens">MVP scope, shipping cadence, and reversibility. Ships before you're comfortable.</div>
+        <div class="persona-questions-label">Questions they always ask</div>
+        <div class="persona-q">"If we had to ship by Friday, what would we cut?"</div>
+        <div class="persona-q">"Is this a reversible or irreversible decision?"</div>
+        <div class="persona-expanded"><div class="persona-expanded-inner">
+          <div class="expanded-label">Frameworks</div>
+          <div class="framework-tags"><span class="framework-tag">Reversibility Test</span><span class="framework-tag">Boring Technology</span></div>
+          <div class="expanded-label">Pushes back on</div>
+          <div class="pushback-text">Microservices before PMF, custom infrastructure before Series A</div>
+          <div class="expanded-label">Try it</div>
+          <div class="example-prompt">Ask the Technical Cofounder to scope our MVP</div>
+        </div></div>
+      </div>
+
+      <!-- Growth Lead -->
+      <div class="persona-card" onclick="toggleCard(this)">
+        <div class="persona-header">
+          <div class="persona-icon"><svg viewBox="0 0 24 24"><path d="M23 6l-9.5 9.5-5-5L1 18"/><path d="M17 6h6v6"/></svg></div>
+          <div><div class="persona-name">Growth Lead</div><div class="persona-role">Acquisition</div></div>
+        </div>
+        <div class="persona-lens">CAC/payback, activation metrics, and cohort retention. Obsessed with the first 1,000 users.</div>
+        <div class="persona-questions-label">Questions they always ask</div>
+        <div class="persona-q">"What's our activation metric, and what % hit it in first session?"</div>
+        <div class="persona-q">"Which channel brought our best-retained users?"</div>
+        <div class="persona-expanded"><div class="persona-expanded-inner">
+          <div class="expanded-label">Frameworks</div>
+          <div class="framework-tags"><span class="framework-tag">ICE Framework</span><span class="framework-tag">Bullseye Framework</span></div>
+          <div class="expanded-label">Pushes back on</div>
+          <div class="pushback-text">"We need more traffic" before fixing conversion, scaling paid ads before activation is solved</div>
+          <div class="expanded-label">Try it</div>
+          <div class="example-prompt">Get the Growth Lead to review our acquisition funnel</div>
+        </div></div>
+      </div>
+
+      <!-- Investor Relations -->
+      <div class="persona-card" onclick="toggleCard(this)">
+        <div class="persona-header">
+          <div class="persona-icon"><svg viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+          <div><div class="persona-name">Investor Relations</div><div class="persona-role">Fundraising</div></div>
+        </div>
+        <div class="persona-lens">Fundraising readiness, term sheets, and milestone-driven raises.</div>
+        <div class="persona-questions-label">Questions they always ask</div>
+        <div class="persona-q">"What milestone will this capital help you reach?"</div>
+        <div class="persona-q">"What metric in your deck makes an investor lean forward?"</div>
+        <div class="persona-expanded"><div class="persona-expanded-inner">
+          <div class="expanded-label">Frameworks</div>
+          <div class="framework-tags"><span class="framework-tag">Three Pillars Readiness</span><span class="framework-tag">Tiered Investor Targeting</span></div>
+          <div class="expanded-label">Pushes back on</div>
+          <div class="pushback-text">Raising too early, valuation obsession over clean terms</div>
+          <div class="expanded-label">Try it</div>
+          <div class="example-prompt">Have Investor Relations prep our fundraising narrative</div>
+        </div></div>
+      </div>
+
+      <!-- Startup Lawyer -->
+      <div class="persona-card" onclick="toggleCard(this)">
+        <div class="persona-header">
+          <div class="persona-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/><path d="M16 13H8M16 17H8M10 9H8"/></svg></div>
+          <div><div class="persona-name">Startup Lawyer</div><div class="persona-role">Legal</div></div>
+        </div>
+        <div class="persona-lens">Severity vs reversibility of legal decisions, clean cap tables, IP ownership.</div>
+        <div class="persona-questions-label">Questions they always ask</div>
+        <div class="persona-q">"Do you have signed IP assignment from everyone who wrote code?"</div>
+        <div class="persona-q">"What is your co-founder vesting schedule?"</div>
+        <div class="persona-expanded"><div class="persona-expanded-inner">
+          <div class="expanded-label">Frameworks</div>
+          <div class="framework-tags"><span class="framework-tag">Severity vs Reversibility</span><span class="framework-tag">Slicing Pie</span></div>
+          <div class="expanded-label">Pushes back on</div>
+          <div class="pushback-text">Handshake agreements, 50/50 splits without vesting, skipping IP assignment</div>
+          <div class="expanded-label">Try it</div>
+          <div class="example-prompt">Ask the Startup Lawyer to review our co-founder agreement</div>
+        </div></div>
+      </div>
+
+      <!-- Product Designer -->
+      <div class="persona-card" onclick="toggleCard(this)">
+        <div class="persona-header">
+          <div class="persona-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div>
+          <div><div class="persona-name">Product Designer</div><div class="persona-role">UX/Design</div></div>
+        </div>
+        <div class="persona-lens">Time-to-value, progressive disclosure, one job per screen. Fights feature bloat.</div>
+        <div class="persona-questions-label">Questions they always ask</div>
+        <div class="persona-q">"What is the user trying to accomplish, in one sentence?"</div>
+        <div class="persona-q">"What happens if we remove this element?"</div>
+        <div class="persona-expanded"><div class="persona-expanded-inner">
+          <div class="expanded-label">Frameworks</div>
+          <div class="framework-tags"><span class="framework-tag">Nielsen's Heuristics</span><span class="framework-tag">Five-Second Test</span><span class="framework-tag">Fitts's Law</span></div>
+          <div class="expanded-label">Pushes back on</div>
+          <div class="pushback-text">Feature additions that compromise clarity, pixel-perfect polish before flow is validated</div>
+          <div class="expanded-label">Try it</div>
+          <div class="example-prompt">Get the Product Designer to review our onboarding flow</div>
+        </div></div>
+      </div>
+
+      <!-- Customer Success -->
+      <div class="persona-card" onclick="toggleCard(this)">
+        <div class="persona-header">
+          <div class="persona-icon"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78Z"/></svg></div>
+          <div><div class="persona-name">Customer Success</div><div class="persona-role">Retention</div></div>
+        </div>
+        <div class="persona-lens">Onboarding completion, health scoring, time-to-value, and churn root causes.</div>
+        <div class="persona-questions-label">Questions they always ask</div>
+        <div class="persona-q">"What does 'success' look like for this customer?"</div>
+        <div class="persona-q">"Which customers are going quiet?"</div>
+        <div class="persona-expanded"><div class="persona-expanded-inner">
+          <div class="expanded-label">Frameworks</div>
+          <div class="framework-tags"><span class="framework-tag">Health Score Model</span><span class="framework-tag">"First Value" Framework</span></div>
+          <div class="expanded-label">Pushes back on</div>
+          <div class="pushback-text">Treating CS as a support alias, adding features to reduce churn before checking adoption</div>
+          <div class="expanded-label">Try it</div>
+          <div class="example-prompt">Have Customer Success analyze our churn patterns</div>
+        </div></div>
+      </div>
+
+      <!-- Data Analyst -->
+      <div class="persona-card" onclick="toggleCard(this)">
+        <div class="persona-header">
+          <div class="persona-icon"><svg viewBox="0 0 24 24"><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5c0 1.66 4 3 9 3s9-1.34 9-3"/><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/><path d="M3 12v7c0 1.66 4 3 9 3s9-1.34 9-3v-7"/></svg></div>
+          <div><div class="persona-name">Data Analyst</div><div class="persona-role">Metrics</div></div>
+        </div>
+        <div class="persona-lens">North Star metric hierarchy, cohort vs aggregate, statistical rigor.</div>
+        <div class="persona-questions-label">Questions they always ask</div>
+        <div class="persona-q">"What decision will this metric help you make?"</div>
+        <div class="persona-q">"Are we looking at cohort view or aggregate?"</div>
+        <div class="persona-expanded"><div class="persona-expanded-inner">
+          <div class="expanded-label">Frameworks</div>
+          <div class="framework-tags"><span class="framework-tag">Metrics Hierarchy</span><span class="framework-tag">Glanceable, Explorable, Actionable</span></div>
+          <div class="expanded-label">Pushes back on</div>
+          <div class="pushback-text">Averages without distributions, calling A/B tests early, dashboard sprawl</div>
+          <div class="expanded-label">Try it</div>
+          <div class="example-prompt">Ask the Data Analyst to review our metrics dashboard</div>
+        </div></div>
+      </div>
+
+      <!-- Content Strategist -->
+      <div class="persona-card" onclick="toggleCard(this)">
+        <div class="persona-header">
+          <div class="persona-icon"><svg viewBox="0 0 24 24"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg></div>
+          <div><div class="persona-name">Content Strategist</div><div class="persona-role">Brand</div></div>
+        </div>
+        <div class="persona-lens">Unique point of view, founder voice, and distribution over creation.</div>
+        <div class="persona-questions-label">Questions they always ask</div>
+        <div class="persona-q">"What does this company believe that competitors do not?"</div>
+        <div class="persona-q">"Could I tell which company this is with the logo hidden?"</div>
+        <div class="persona-expanded"><div class="persona-expanded-inner">
+          <div class="expanded-label">Frameworks</div>
+          <div class="framework-tags"><span class="framework-tag">POV Audit</span><span class="framework-tag">Obviously Awesome</span><span class="framework-tag">1-to-7 Distribution</span></div>
+          <div class="expanded-label">Pushes back on</div>
+          <div class="pushback-text">Generic content any competitor could publish, committees editing founder voice into blandness</div>
+          <div class="expanded-label">Try it</div>
+          <div class="example-prompt">Get the Content Strategist to sharpen our positioning</div>
+        </div></div>
+      </div>
+
+      <!-- DevOps Lead -->
+      <div class="persona-card" onclick="toggleCard(this)">
+        <div class="persona-header">
+          <div class="persona-icon"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><path d="M6 6h.01M6 18h.01"/></svg></div>
+          <div><div class="persona-name">DevOps Lead</div><div class="persona-role">Infrastructure</div></div>
+        </div>
+        <div class="persona-lens">Operational burden, managed services first, progressive delivery.</div>
+        <div class="persona-questions-label">Questions they always ask</div>
+        <div class="persona-q">"What is our rollback plan if this deployment breaks?"</div>
+        <div class="persona-q">"If we get 10x traffic tomorrow, what breaks first?"</div>
+        <div class="persona-expanded"><div class="persona-expanded-inner">
+          <div class="expanded-label">Frameworks</div>
+          <div class="framework-tags"><span class="framework-tag">Operational Burden</span><span class="framework-tag">Managed Services First</span><span class="framework-tag">Three Pillars</span></div>
+          <div class="expanded-label">Pushes back on</div>
+          <div class="pushback-text">Kubernetes before 10 engineers, "We will add monitoring later"</div>
+          <div class="expanded-label">Try it</div>
+          <div class="example-prompt">Have the DevOps Lead review our deployment pipeline</div>
+        </div></div>
+      </div>
+
+      <!-- Angel Investor -->
+      <div class="persona-card" onclick="toggleCard(this)">
+        <div class="persona-header">
+          <div class="persona-icon"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8Z"/><circle cx="12" cy="12" r="3"/></svg></div>
+          <div><div class="persona-name">Angel Investor</div><div class="persona-role">Advisory</div></div>
+        </div>
+        <div class="persona-lens">Founder-market fit, timing, market structure, and organic pull signals.</div>
+        <div class="persona-questions-label">Questions they always ask</div>
+        <div class="persona-q">"What is the contrarian belief embedded in this company?"</div>
+        <div class="persona-q">"If a competitor copied your product, what would you still have?"</div>
+        <div class="persona-expanded"><div class="persona-expanded-inner">
+          <div class="expanded-label">Frameworks</div>
+          <div class="framework-tags"><span class="framework-tag">Founder-Market Fit</span><span class="framework-tag">"Kill the Company"</span></div>
+          <div class="expanded-label">Pushes back on</div>
+          <div class="pushback-text">"We have no competition," top-down TAM slides</div>
+          <div class="expanded-label">Try it</div>
+          <div class="example-prompt">Get the Angel Investor's read on our market timing</div>
+        </div></div>
+      </div>
+
+    </div>
+  </div>
+```
+
+- [ ] **Step 2: Add Startup Advisors tab panel**
+
+Insert after the closing `</div>` of `tab-startup`:
+
+```html
+  <!-- STARTUP ADVISORS -->
+  <div class="tab-panel" id="tab-advisors">
+    <div class="persona-grid">
+
+      <!-- VC Partner -->
+      <div class="persona-card" onclick="toggleCard(this)">
+        <div class="persona-header">
+          <div class="persona-icon"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8Z"/></svg></div>
+          <div><div class="persona-name">VC Partner</div><div class="persona-role">Investment</div></div>
+        </div>
+        <div class="persona-lens">Power Law outcomes, bottom-up TAM, defensibility, and burn multiples.</div>
+        <div class="persona-questions-label">Questions they always ask</div>
+        <div class="persona-q">"Walk me through the TAM bottom-up."</div>
+        <div class="persona-q">"Which of Helmer's 7 Powers do you have today?"</div>
+        <div class="persona-expanded"><div class="persona-expanded-inner">
+          <div class="expanded-label">Frameworks</div>
+          <div class="framework-tags"><span class="framework-tag">Rachleff Market-Team</span><span class="framework-tag">Helmer 7 Powers</span></div>
+          <div class="expanded-label">Pushes back on</div>
+          <div class="pushback-text">Top-down TAM, defensibility claims based on "execution" or "speed"</div>
+          <div class="expanded-label">Try it</div>
+          <div class="example-prompt">Have the VC Partner pressure-test our pitch deck</div>
+        </div></div>
+      </div>
+
+      <!-- Executive Coach -->
+      <div class="persona-card" onclick="toggleCard(this)">
+        <div class="persona-header">
+          <div class="persona-icon"><svg viewBox="0 0 24 24"><path d="M12 3C7.5 3 4 5.5 4 9c0 2.5 1.5 4.5 4 5.5V21h8v-6.5c2.5-1 4-3 4-5.5 0-3.5-3.5-6-8-6Z"/><path d="M9 21h6"/></svg></div>
+          <div><div class="persona-name">Executive Coach</div><div class="persona-role">Leadership</div></div>
+        </div>
+        <div class="persona-lens">Avoidance patterns, identity tasks, delegation bottlenecks.</div>
+        <div class="persona-questions-label">Questions they always ask</div>
+        <div class="persona-q">"What conversation have you been putting off?"</div>
+        <div class="persona-q">"You describe this as a team problem. What if it's a you problem?"</div>
+        <div class="persona-expanded"><div class="persona-expanded-inner">
+          <div class="expanded-label">Frameworks</div>
+          <div class="framework-tags"><span class="framework-tag">Kegan's Adult Development</span><span class="framework-tag">Johari Window</span></div>
+          <div class="expanded-label">Pushes back on</div>
+          <div class="pushback-text">Blaming the team for problems that trace to leadership, confusing busy with effective</div>
+          <div class="expanded-label">Try it</div>
+          <div class="example-prompt">Have the Executive Coach assess my leadership blind spots</div>
+        </div></div>
+      </div>
+
+      <!-- Crisis Manager -->
+      <div class="persona-card" onclick="toggleCard(this)">
+        <div class="persona-header">
+          <div class="persona-icon"><svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0Z"/><path d="M12 9v4M12 17h.01"/></svg></div>
+          <div><div class="persona-name">Crisis Manager</div><div class="persona-role">Risk</div></div>
+        </div>
+        <div class="persona-lens">Pre-mortem planning, communication speed, single points of failure.</div>
+        <div class="persona-questions-label">Questions they always ask</div>
+        <div class="persona-q">"If this goes wrong, what does the headline look like?"</div>
+        <div class="persona-q">"Who owns crisis communication right now?"</div>
+        <div class="persona-expanded"><div class="persona-expanded-inner">
+          <div class="expanded-label">Frameworks</div>
+          <div class="framework-tags"><span class="framework-tag">Cynefin Framework</span><span class="framework-tag">Shell Scenario Methodology</span></div>
+          <div class="expanded-label">Pushes back on</div>
+          <div class="pushback-text">"That will never happen to us," crisis plans nobody has tested</div>
+          <div class="expanded-label">Try it</div>
+          <div class="example-prompt">Ask the Crisis Manager to run a pre-mortem on our launch</div>
+        </div></div>
+      </div>
+
+      <!-- M&A Advisor -->
+      <div class="persona-card" onclick="toggleCard(this)">
+        <div class="persona-header">
+          <div class="persona-icon"><svg viewBox="0 0 24 24"><path d="M17 11h4a2 2 0 0 1 0 4h-4"/><path d="M3 11h4a2 2 0 0 1 0 4H3"/><path d="M12 2v4M12 18v4"/><circle cx="12" cy="11" r="4"/></svg></div>
+          <div><div class="persona-name">M&amp;A Advisor</div><div class="persona-role">Corporate Dev</div></div>
+        </div>
+        <div class="persona-lens">Build vs buy time-value, synergy realization rates, deal structure.</div>
+        <div class="persona-questions-label">Questions they always ask</div>
+        <div class="persona-q">"If you could not acquire this, what would it cost to build?"</div>
+        <div class="persona-q">"Walk me through the synergy math line by line."</div>
+        <div class="persona-expanded"><div class="persona-expanded-inner">
+          <div class="expanded-label">Frameworks</div>
+          <div class="framework-tags"><span class="framework-tag">Valuation Triangulation</span><span class="framework-tag">Synergy Haircuts</span></div>
+          <div class="expanded-label">Pushes back on</div>
+          <div class="pushback-text">"Strategic premium" justifying overpayment, deals driven by ego</div>
+          <div class="expanded-label">Try it</div>
+          <div class="example-prompt">Have the M&amp;A Advisor evaluate this acquisition target</div>
+        </div></div>
+      </div>
+
+      <!-- AI Strategist -->
+      <div class="persona-card" onclick="toggleCard(this)">
+        <div class="persona-header">
+          <div class="persona-icon"><svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 3 2 5.5 4 7.5.5.5 1 1.5 1 2.5h4c0-1 .5-2 1-2.5 2-2 4-4.5 4-7.5a7 7 0 0 0-7-7Z"/><path d="M9 22h6M10 2v1M14 2v1M5.5 5.5l.7.7M18.5 5.5l-.7.7"/></svg></div>
+          <div><div class="persona-name">AI Strategist</div><div class="persona-role">Technology</div></div>
+        </div>
+        <div class="persona-lens">Business impact vs feasibility, data readiness, build vs buy AI.</div>
+        <div class="persona-questions-label">Questions they always ask</div>
+        <div class="persona-q">"What business metric will this AI project move, and by how much?"</div>
+        <div class="persona-q">"Is this a moat or a wrapper any competitor could replicate?"</div>
+        <div class="persona-expanded"><div class="persona-expanded-inner">
+          <div class="expanded-label">Frameworks</div>
+          <div class="framework-tags"><span class="framework-tag">2x2 Impact/Feasibility</span><span class="framework-tag">AI Readiness Dimensions</span></div>
+          <div class="expanded-label">Pushes back on</div>
+          <div class="pushback-text">"AI-first" strategies without use cases, demo-driven development, ignoring inference costs</div>
+          <div class="expanded-label">Try it</div>
+          <div class="example-prompt">Ask the AI Strategist to evaluate our AI use cases</div>
+        </div></div>
+      </div>
+
+      <!-- Reality Checker -->
+      <div class="persona-card" onclick="toggleCard(this)">
+        <div class="persona-header">
+          <div class="persona-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="7"/><path d="M8.21 13.89L7 23l5-3 5 3-1.21-9.12"/></svg></div>
+          <div><div class="persona-name">Reality Checker</div><div class="persona-role">Devil's Advocate</div></div>
+        </div>
+        <div class="persona-lens">Epistemic rigor, cognitive bias catalog, evidence vs narrative.</div>
+        <div class="persona-questions-label">Questions they always ask</div>
+        <div class="persona-q">"What would have to be true for this to fail?"</div>
+        <div class="persona-q">"Strip the narrative. What raw data points does this plan rest on?"</div>
+        <div class="persona-expanded"><div class="persona-expanded-inner">
+          <div class="expanded-label">Frameworks</div>
+          <div class="framework-tags"><span class="framework-tag">Epistemic Rigor Hierarchy</span><span class="framework-tag">"Steel Man, Then Destroy"</span></div>
+          <div class="expanded-label">Pushes back on</div>
+          <div class="pushback-text">Consensus without visible dissent, plans assuming best-case execution across every dimension</div>
+          <div class="expanded-label">Try it</div>
+          <div class="example-prompt">Get the Reality Checker to tear apart our Q3 plan</div>
+        </div></div>
+      </div>
+
+    </div>
+  </div>
+
+</section>
+```
+
+- [ ] **Step 3: Verify in browser**
+
+Run: `open index.html` (tabs won't switch yet since JS is not added, but the HTML structure should be visible in dev tools)
+
+- [ ] **Step 4: Commit**
+
+```bash
+git add index.html
+git commit -m "feat: add startup cabinet and startup advisors persona tabs"
+```
+
+---
+
+### Task 4: Add How It Works, Comparison Table, and Footer
+
+**Files:**
+- Modify: `index.html`
+
+- [ ] **Step 1: Add How It Works section**
+
+Insert after the persona grid section closing `</section>`, before `</body>`:
+
+```html
+<!-- ===== HOW IT WORKS ===== -->
+<section class="section">
+  <div class="section-header">
+    <h2 class="section-title">How It Works</h2>
+    <p class="section-sub">Three steps to get executive-level perspectives on any decision.</p>
+  </div>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">Step 1</div>
+      <div class="step-title">Install</div>
+      <div class="step-desc">Two commands. Takes 30 seconds.</div>
+      <div class="step-example">claude plugin marketplace add shaan-ad/the-cabinet<br>claude plugin install the-cabinet</div>
+    </div>
+    <div class="step">
+      <div class="step-num">Step 2</div>
+      <div class="step-title">Ask</div>
+      <div class="step-desc">Point any decision at a specific persona or the full cabinet.</div>
+      <div class="step-example">Run this pricing strategy past the CFO</div>
+    </div>
+    <div class="step">
+      <div class="step-num">Step 3</div>
+      <div class="step-title">Get Perspective</div>
+      <div class="step-desc">Real frameworks. Sharp questions. Honest pushback on your blind spots.</div>
+    </div>
+  </div>
+
+  <div class="install-tabs">
+    <button class="install-tab active" data-itab="cli">Claude Code (CLI)</button>
+    <button class="install-tab" data-itab="cowork">Cowork</button>
+    <button class="install-tab" data-itab="vscode">VS Code / JetBrains</button>
+    <button class="install-tab" data-itab="raw">Raw Markdown</button>
+  </div>
+
+  <div class="install-panel active" id="itab-cli">
+    <code>claude plugin marketplace add shaan-ad/the-cabinet<br>claude plugin install the-cabinet</code>
+  </div>
+  <div class="install-panel" id="itab-cowork">
+    <ol>
+      <li>Download the <a href="https://github.com/shaan-ad/the-cabinet/archive/refs/heads/main.zip" style="color:#a78bfa;">plugin zip</a></li>
+      <li>In Cowork, go to <strong>Customize</strong> &gt; <strong>+</strong> next to Personal plugins</li>
+      <li>Select <strong>Create plugin</strong> &gt; <strong>Upload plugin</strong></li>
+      <li>Upload the zip file</li>
+    </ol>
+  </div>
+  <div class="install-panel" id="itab-vscode">
+    <p>Type <code style="background:rgba(0,0,0,0.3);padding:2px 6px;border-radius:4px;font-size:13px;">/plugins</code> in the Claude Code panel, add <code style="background:rgba(0,0,0,0.3);padding:2px 6px;border-radius:4px;font-size:13px;">shaan-ad/the-cabinet</code> as a marketplace source, then install from the GUI.</p>
+  </div>
+  <div class="install-panel" id="itab-raw">
+    <p>Every persona is a standalone <code style="background:rgba(0,0,0,0.3);padding:2px 6px;border-radius:4px;font-size:13px;">.md</code> file. Open any file in <code style="background:rgba(0,0,0,0.3);padding:2px 6px;border-radius:4px;font-size:13px;">cabinet/</code>, <code style="background:rgba(0,0,0,0.3);padding:2px 6px;border-radius:4px;font-size:13px;">startup/</code>, or <code style="background:rgba(0,0,0,0.3);padding:2px 6px;border-radius:4px;font-size:13px;">advisors/</code>, copy the content, and paste it as a system prompt in ChatGPT, Gemini, or any AI tool.</p>
+  </div>
+</section>
+```
+
+- [ ] **Step 2: Add What Makes This Different section**
+
+Insert after the How It Works `</section>`:
+
+```html
+<!-- ===== WHAT MAKES THIS DIFFERENT ===== -->
+<section class="section">
+  <div class="section-header">
+    <h2 class="section-title">What Makes This Different</h2>
+  </div>
+
+  <div class="comparison">
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th>Generic Prompts</th>
+          <th>Prompt Libraries</th>
+          <th>The Cabinet</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Depth</td>
+          <td>Surface-level</td>
+          <td>Template-based</td>
+          <td>800+ words per persona with real frameworks</td>
+        </tr>
+        <tr>
+          <td>Perspective</td>
+          <td>One voice</td>
+          <td>Multiple styles</td>
+          <td>Distinct decision frameworks per role</td>
+        </tr>
+        <tr>
+          <td>Challenge</td>
+          <td>Agrees with you</td>
+          <td>Follows instructions</td>
+          <td>Pushes back on blind spots</td>
+        </tr>
+        <tr>
+          <td>Expertise</td>
+          <td>Generalist</td>
+          <td>Role-aware</td>
+          <td>Named frameworks (DCF, Porter's, Kano, etc.)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+```
+
+- [ ] **Step 3: Add Footer**
+
+Insert after the comparison `</section>`:
+
+```html
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="footer-content">
+    <img src="assets/headshot.jpg" alt="Shaan Agara" class="footer-headshot">
+    <span class="footer-name">Built by Shaan Agara</span>
+  </div>
+  <div class="footer-links">
+    <a href="https://github.com/shaan-ad/the-cabinet">GitHub</a>
+    <a href="https://www.linkedin.com/in/shaan-agara/">LinkedIn</a>
+    <a href="https://github.com/shaan-ad/pm-os">Also check out PM-OS</a>
+  </div>
+</footer>
+```
+
+- [ ] **Step 4: Verify in browser**
+
+Expected: All sections visible. How It Works shows 3 steps with install tabs (not functional yet). Comparison table with highlighted Cabinet column. Footer with headshot, name, links.
+
+- [ ] **Step 5: Commit**
+
+```bash
+git add index.html
+git commit -m "feat: add how it works, comparison table, and footer sections"
+```
+
+---
+
+### Task 5: Add JavaScript (Tabs, Card Expand, Copy-to-Clipboard)
+
+**Files:**
+- Modify: `index.html`
+
+- [ ] **Step 1: Add the script block before closing `</body>`**
+
+Insert before `</body>`:
+
+```html
+<script>
+// Tab switching (persona grid)
+document.querySelectorAll('.tab[data-tab]').forEach(function(tab) {
+  tab.addEventListener('click', function() {
+    document.querySelectorAll('.tab[data-tab]').forEach(function(t) { t.classList.remove('active'); });
+    document.querySelectorAll('.tab-panel').forEach(function(p) { p.classList.remove('active'); });
+    tab.classList.add('active');
+    document.getElementById('tab-' + tab.dataset.tab).classList.add('active');
+    // Collapse any expanded cards when switching tabs
+    document.querySelectorAll('.persona-card.expanded').forEach(function(c) { c.classList.remove('expanded'); });
+  });
+});
+
+// Install tabs (how it works section)
+document.querySelectorAll('.install-tab[data-itab]').forEach(function(tab) {
+  tab.addEventListener('click', function() {
+    document.querySelectorAll('.install-tab').forEach(function(t) { t.classList.remove('active'); });
+    document.querySelectorAll('.install-panel').forEach(function(p) { p.classList.remove('active'); });
+    tab.classList.add('active');
+    document.getElementById('itab-' + tab.dataset.itab).classList.add('active');
+  });
+});
+
+// Card expand/collapse (accordion)
+function toggleCard(card) {
+  var wasExpanded = card.classList.contains('expanded');
+  // Collapse all cards in the same grid
+  card.closest('.persona-grid').querySelectorAll('.persona-card.expanded').forEach(function(c) {
+    c.classList.remove('expanded');
+  });
+  // Toggle the clicked card (if it wasn't already expanded)
+  if (!wasExpanded) {
+    card.classList.add('expanded');
+  }
+}
+
+// Copy to clipboard
+function copyCmd(step) {
+  var cmd = step.querySelector('.install-cmd').textContent;
+  var btn = step.querySelector('.install-copy');
+  navigator.clipboard.writeText(cmd).then(function() {
+    btn.classList.add('copied');
+    btn.innerHTML = '&#10003;';
+    setTimeout(function() {
+      btn.classList.remove('copied');
+      btn.innerHTML = '&#128203;';
+    }, 2000);
+  });
+}
+</script>
+```
+
+- [ ] **Step 2: Verify all interactions in browser**
+
+Test the following:
+
+1. Click "Startup Cabinet" tab: grid swaps to show 10 startup personas
+2. Click "Startup Advisors" tab: grid swaps to show 6 advisor personas
+3. Click "Executives Leadership" tab: back to 10 executives
+4. Click any persona card: it expands inline showing frameworks, pushback, example prompt
+5. Click another card: previous one collapses, new one expands (accordion)
+6. Click the expanded card again: it collapses
+7. Click Step 1 install command: copies to clipboard, checkmark appears briefly
+8. Click Step 2 install command: copies to clipboard, checkmark appears briefly
+9. Click install tabs in How It Works: CLI, Cowork, VS Code, Raw Markdown panels swap
+10. Resize browser: 3-col to 2-col to 1-col grid, tabs wrap on mobile
+
+- [ ] **Step 3: Commit**
+
+```bash
+git add index.html
+git commit -m "feat: add tab switching, card expand/collapse, and copy-to-clipboard"
+```
+
+---
+
+### Task 6: Final Verification and Polish
+
+**Files:**
+- Modify: `index.html` (if any issues found)
+
+- [ ] **Step 1: Run HTML validation**
+
+Open in browser, check for console errors. Verify:
+- No JavaScript errors in console
+- All 26 persona cards render correctly across all 3 tabs
+- All SVG icons display as monochrome thin-line style
+- Copy-to-clipboard works
+- Responsive at 320px, 640px, 900px, 1200px widths
+- Footer headshot loads correctly
+- All links (GitHub, LinkedIn, PM-OS) point to correct URLs
+
+- [ ] **Step 2: Fix any issues found**
+
+Address any rendering, layout, or interaction bugs.
+
+- [ ] **Step 3: Final commit**
+
+```bash
+git add -A
+git commit -m "feat: complete the cabinet landing page"
+```
