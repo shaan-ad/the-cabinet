@@ -19,7 +19,9 @@ Full-viewport section with animated radial gradient background (purple and pink 
 Content:
 - "The Cabinet" in ~64px, font-weight 800, gradient text (white to light purple)
 - Tagline: "26 AI executive personas for Claude Code. Every leader needs a cabinet."
-- Install command box: `claude plugin marketplace add shaan-ad/the-cabinet` with copy-to-clipboard button
+- Install command box (2-step, following PM-OS format):
+  - Step 1: `claude plugin marketplace add shaan-ad/the-cabinet` (copy-to-clipboard)
+  - Step 2: `claude plugin install the-cabinet` (copy-to-clipboard)
 - Stats bar: 26 personas | 180+ questions | 50+ frameworks | 0 lines of code
 
 Animation: Slow drifting radial gradient in the background (CSS keyframes, subtle).

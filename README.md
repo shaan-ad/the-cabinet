@@ -4,15 +4,20 @@
 
 Point any decision, strategy, or problem at The Cabinet and get perspectives from every leadership angle. A CEO who challenges your vision. A CFO who demands the numbers. A Reality Checker who tears apart your assumptions.
 
-Pure markdown. Zero code. Install in one command.
+Pure markdown. Zero code. Install in two commands.
 
 ## Install
 
 ### Claude Code (CLI)
 
+**Step 1:** Add the marketplace
 ```bash
 claude plugin marketplace add shaan-ad/the-cabinet
-claude plugin install the-cabinet@the-cabinet
+```
+
+**Step 2:** Install the plugin
+```bash
+claude plugin install the-cabinet
 ```
 
 ### Claude Cowork (Desktop / Web)

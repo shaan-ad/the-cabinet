@@ -218,17 +218,6 @@
     border: 1px solid rgba(255,255,255,0.07);
     border-radius: 14px;
     padding: 22px;
-    cursor: pointer;
-    transition: all 0.25s ease;
-  }
-  .persona-card:hover {
-    background: rgba(139,92,246,0.06);
-    border-color: rgba(139,92,246,0.25);
-    transform: translateY(-2px);
-  }
-  .persona-card.expanded {
-    background: rgba(139,92,246,0.08);
-    border-color: rgba(139,92,246,0.35);
   }
   .persona-header {
     display: flex;
@@ -288,14 +277,6 @@
   }
 
   /* ===== EXPANDED CARD CONTENT ===== */
-  .persona-expanded {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.35s ease;
-  }
-  .persona-card.expanded .persona-expanded {
-    max-height: 400px;
-  }
   .persona-expanded-inner {
     padding-top: 16px;
     margin-top: 16px;
@@ -550,7 +531,7 @@
 <section class="hero">
   <div class="hero-content">
     <h1>The Cabinet</h1>
-    <p class="tagline">26 AI executive personas for Claude Code.<br><strong>Every leader needs a cabinet.</strong></p>
+    <p class="tagline">26 AI executive personas for Claude Code and Cowork.<br><strong>Every leader needs a cabinet.</strong></p>
     <div class="install-box">
       <div class="install-step" onclick="copyCmd(this)">
         <span class="install-label">Step 1</span>
@@ -567,14 +548,13 @@
       <div class="stat"><div class="stat-num">26</div><div class="stat-label">Personas</div></div>
       <div class="stat"><div class="stat-num">180+</div><div class="stat-label">Questions</div></div>
       <div class="stat"><div class="stat-num">50+</div><div class="stat-label">Frameworks</div></div>
-      <div class="stat"><div class="stat-num">0</div><div class="stat-label">Lines of Code</div></div>
     </div>
   </div>
 </section>
 
 <!-- ===== EXPLAINER ===== -->
 <div class="explainer">
-  <p>Point any decision, strategy, or problem at The Cabinet and get perspectives from every leadership angle. A CEO who challenges your vision. A CFO who demands the numbers. A Reality Checker who tears apart your assumptions. Pure markdown. Zero code. Install in two commands.</p>
+  <p>Point any decision, strategy, or problem at The Cabinet and get perspectives from every leadership angle. A CEO who challenges your vision. A CFO who demands the numbers. A Reality Checker who tears apart your assumptions.</p>
 </div>
 
 <!-- ===== PERSONA GRID ===== -->
@@ -587,7 +567,7 @@
   <div class="tabs">
     <button class="tab active" data-tab="executives">Executives Leadership</button>
     <button class="tab" data-tab="startup">Startup Cabinet</button>
-    <button class="tab" data-tab="advisors">Startup Advisors</button>
+    <button class="tab" data-tab="advisors">Strategic Advisors</button>
   </div>
 
   <!-- EXECUTIVES LEADERSHIP -->
@@ -595,7 +575,7 @@
     <div class="persona-grid">
 
       <!-- CEO -->
-      <div class="persona-card" onclick="toggleCard(this)">
+      <div class="persona-card">
         <div class="persona-header">
           <div class="persona-icon"><svg viewBox="0 0 24 24"><path d="M12 2L15 8.5L22 9.5L17 14.5L18 21.5L12 18.5L6 21.5L7 14.5L2 9.5L9 8.5L12 2Z"/></svg></div>
           <div><div class="persona-name">The CEO</div><div class="persona-role">Chief Executive</div></div>
@@ -615,7 +595,7 @@
       </div>
 
       <!-- CFO -->
-      <div class="persona-card" onclick="toggleCard(this)">
+      <div class="persona-card">
         <div class="persona-header">
           <div class="persona-icon"><svg viewBox="0 0 24 24"><path d="M18 20V10M12 20V4M6 20V14"/></svg></div>
           <div><div class="persona-name">The CFO</div><div class="persona-role">Chief Financial</div></div>
@@ -635,7 +615,7 @@
       </div>
 
       <!-- CTO -->
-      <div class="persona-card" onclick="toggleCard(this)">
+      <div class="persona-card">
         <div class="persona-header">
           <div class="persona-icon"><svg viewBox="0 0 24 24"><path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1Z"/></svg></div>
           <div><div class="persona-name">The CTO</div><div class="persona-role">Chief Technology</div></div>
@@ -655,7 +635,7 @@
       </div>
 
       <!-- CMO -->
-      <div class="persona-card" onclick="toggleCard(this)">
+      <div class="persona-card">
         <div class="persona-header">
           <div class="persona-icon"><svg viewBox="0 0 24 24"><path d="M3 11l18-5v12L3 13v-2Z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg></div>
           <div><div class="persona-name">The CMO</div><div class="persona-role">Chief Marketing</div></div>
@@ -675,7 +655,7 @@
       </div>
 
       <!-- COO -->
-      <div class="persona-card" onclick="toggleCard(this)">
+      <div class="persona-card">
         <div class="persona-header">
           <div class="persona-icon"><svg viewBox="0 0 24 24"><path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3"/><path d="M1 14h6M9 8h6M17 16h6"/></svg></div>
           <div><div class="persona-name">The COO</div><div class="persona-role">Chief Operations</div></div>
@@ -695,7 +675,7 @@
       </div>
 
       <!-- CPO -->
-      <div class="persona-card" onclick="toggleCard(this)">
+      <div class="persona-card">
         <div class="persona-header">
           <div class="persona-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
           <div><div class="persona-name">The CPO</div><div class="persona-role">Chief Product</div></div>
@@ -715,7 +695,7 @@
       </div>
 
       <!-- CHRO -->
-      <div class="persona-card" onclick="toggleCard(this)">
+      <div class="persona-card">
         <div class="persona-header">
           <div class="persona-icon"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
           <div><div class="persona-name">The CHRO</div><div class="persona-role">Chief People</div></div>
@@ -735,7 +715,7 @@
       </div>
 
       <!-- General Counsel -->
-      <div class="persona-card" onclick="toggleCard(this)">
+      <div class="persona-card">
         <div class="persona-header">
           <div class="persona-icon"><svg viewBox="0 0 24 24"><path d="M12 3v18"/><path d="M5 6l7-3 7 3"/><path d="M5 6v6c0 1.5-2 3-2 3h4s-2-1.5-2-3V6Z"/><path d="M19 6v6c0 1.5 2 3 2 3h-4s2-1.5 2-3V6Z"/></svg></div>
           <div><div class="persona-name">General Counsel</div><div class="persona-role">Legal</div></div>
@@ -755,7 +735,7 @@
       </div>
 
       <!-- Chief of Staff -->
-      <div class="persona-card" onclick="toggleCard(this)">
+      <div class="persona-card">
         <div class="persona-header">
           <div class="persona-icon"><svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></div>
           <div><div class="persona-name">Chief of Staff</div><div class="persona-role">Execution</div></div>
@@ -775,7 +755,7 @@
       </div>
 
       <!-- Board Advisor -->
-      <div class="persona-card" onclick="toggleCard(this)">
+      <div class="persona-card">
         <div class="persona-header">
           <div class="persona-icon"><svg viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/><path d="M9 9h1M9 13h1M9 17h1"/></svg></div>
           <div><div class="persona-name">Board Advisor</div><div class="persona-role">Governance</div></div>
@@ -802,7 +782,7 @@
     <div class="persona-grid">
 
       <!-- Technical Cofounder -->
-      <div class="persona-card" onclick="toggleCard(this)">
+      <div class="persona-card">
         <div class="persona-header">
           <div class="persona-icon"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76Z"/></svg></div>
           <div><div class="persona-name">Technical Cofounder</div><div class="persona-role">Engineering</div></div>
@@ -822,7 +802,7 @@
       </div>
 
       <!-- Growth Lead -->
-      <div class="persona-card" onclick="toggleCard(this)">
+      <div class="persona-card">
         <div class="persona-header">
           <div class="persona-icon"><svg viewBox="0 0 24 24"><path d="M23 6l-9.5 9.5-5-5L1 18"/><path d="M17 6h6v6"/></svg></div>
           <div><div class="persona-name">Growth Lead</div><div class="persona-role">Acquisition</div></div>
@@ -842,7 +822,7 @@
       </div>
 
       <!-- Investor Relations -->
-      <div class="persona-card" onclick="toggleCard(this)">
+      <div class="persona-card">
         <div class="persona-header">
           <div class="persona-icon"><svg viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
           <div><div class="persona-name">Investor Relations</div><div class="persona-role">Fundraising</div></div>
@@ -862,7 +842,7 @@
       </div>
 
       <!-- Startup Lawyer -->
-      <div class="persona-card" onclick="toggleCard(this)">
+      <div class="persona-card">
         <div class="persona-header">
           <div class="persona-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/><path d="M16 13H8M16 17H8M10 9H8"/></svg></div>
           <div><div class="persona-name">Startup Lawyer</div><div class="persona-role">Legal</div></div>
@@ -882,7 +862,7 @@
       </div>
 
       <!-- Product Designer -->
-      <div class="persona-card" onclick="toggleCard(this)">
+      <div class="persona-card">
         <div class="persona-header">
           <div class="persona-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div>
           <div><div class="persona-name">Product Designer</div><div class="persona-role">UX/Design</div></div>
@@ -902,7 +882,7 @@
       </div>
 
       <!-- Customer Success -->
-      <div class="persona-card" onclick="toggleCard(this)">
+      <div class="persona-card">
         <div class="persona-header">
           <div class="persona-icon"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78Z"/></svg></div>
           <div><div class="persona-name">Customer Success</div><div class="persona-role">Retention</div></div>
@@ -922,7 +902,7 @@
       </div>
 
       <!-- Data Analyst -->
-      <div class="persona-card" onclick="toggleCard(this)">
+      <div class="persona-card">
         <div class="persona-header">
           <div class="persona-icon"><svg viewBox="0 0 24 24"><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5c0 1.66 4 3 9 3s9-1.34 9-3"/><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/><path d="M3 12v7c0 1.66 4 3 9 3s9-1.34 9-3v-7"/></svg></div>
           <div><div class="persona-name">Data Analyst</div><div class="persona-role">Metrics</div></div>
@@ -942,7 +922,7 @@
       </div>
 
       <!-- Content Strategist -->
-      <div class="persona-card" onclick="toggleCard(this)">
+      <div class="persona-card">
         <div class="persona-header">
           <div class="persona-icon"><svg viewBox="0 0 24 24"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg></div>
           <div><div class="persona-name">Content Strategist</div><div class="persona-role">Brand</div></div>
@@ -962,7 +942,7 @@
       </div>
 
       <!-- DevOps Lead -->
-      <div class="persona-card" onclick="toggleCard(this)">
+      <div class="persona-card">
         <div class="persona-header">
           <div class="persona-icon"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><path d="M6 6h.01M6 18h.01"/></svg></div>
           <div><div class="persona-name">DevOps Lead</div><div class="persona-role">Infrastructure</div></div>
@@ -982,7 +962,7 @@
       </div>
 
       <!-- Angel Investor -->
-      <div class="persona-card" onclick="toggleCard(this)">
+      <div class="persona-card">
         <div class="persona-header">
           <div class="persona-icon"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8Z"/><circle cx="12" cy="12" r="3"/></svg></div>
           <div><div class="persona-name">Angel Investor</div><div class="persona-role">Advisory</div></div>
@@ -1004,12 +984,12 @@
     </div>
   </div>
 
-  <!-- STARTUP ADVISORS -->
+  <!-- STRATEGIC ADVISORS -->
   <div class="tab-panel" id="tab-advisors">
     <div class="persona-grid">
 
       <!-- VC Partner -->
-      <div class="persona-card" onclick="toggleCard(this)">
+      <div class="persona-card">
         <div class="persona-header">
           <div class="persona-icon"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8Z"/></svg></div>
           <div><div class="persona-name">VC Partner</div><div class="persona-role">Investment</div></div>
@@ -1029,7 +1009,7 @@
       </div>
 
       <!-- Executive Coach -->
-      <div class="persona-card" onclick="toggleCard(this)">
+      <div class="persona-card">
         <div class="persona-header">
           <div class="persona-icon"><svg viewBox="0 0 24 24"><path d="M12 3C7.5 3 4 5.5 4 9c0 2.5 1.5 4.5 4 5.5V21h8v-6.5c2.5-1 4-3 4-5.5 0-3.5-3.5-6-8-6Z"/><path d="M9 21h6"/></svg></div>
           <div><div class="persona-name">Executive Coach</div><div class="persona-role">Leadership</div></div>
@@ -1049,7 +1029,7 @@
       </div>
 
       <!-- Crisis Manager -->
-      <div class="persona-card" onclick="toggleCard(this)">
+      <div class="persona-card">
         <div class="persona-header">
           <div class="persona-icon"><svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0Z"/><path d="M12 9v4M12 17h.01"/></svg></div>
           <div><div class="persona-name">Crisis Manager</div><div class="persona-role">Risk</div></div>
@@ -1069,7 +1049,7 @@
       </div>
 
       <!-- M&A Advisor -->
-      <div class="persona-card" onclick="toggleCard(this)">
+      <div class="persona-card">
         <div class="persona-header">
           <div class="persona-icon"><svg viewBox="0 0 24 24"><path d="M17 11h4a2 2 0 0 1 0 4h-4"/><path d="M3 11h4a2 2 0 0 1 0 4H3"/><path d="M12 2v4M12 18v4"/><circle cx="12" cy="11" r="4"/></svg></div>
           <div><div class="persona-name">M&amp;A Advisor</div><div class="persona-role">Corporate Dev</div></div>
@@ -1089,7 +1069,7 @@
       </div>
 
       <!-- AI Strategist -->
-      <div class="persona-card" onclick="toggleCard(this)">
+      <div class="persona-card">
         <div class="persona-header">
           <div class="persona-icon"><svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 3 2 5.5 4 7.5.5.5 1 1.5 1 2.5h4c0-1 .5-2 1-2.5 2-2 4-4.5 4-7.5a7 7 0 0 0-7-7Z"/><path d="M9 22h6M10 2v1M14 2v1M5.5 5.5l.7.7M18.5 5.5l-.7.7"/></svg></div>
           <div><div class="persona-name">AI Strategist</div><div class="persona-role">Technology</div></div>
@@ -1109,7 +1089,7 @@
       </div>
 
       <!-- Reality Checker -->
-      <div class="persona-card" onclick="toggleCard(this)">
+      <div class="persona-card">
         <div class="persona-header">
           <div class="persona-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="7"/><path d="M8.21 13.89L7 23l5-3 5 3-1.21-9.12"/></svg></div>
           <div><div class="persona-name">Reality Checker</div><div class="persona-role">Devil's Advocate</div></div>
@@ -1239,9 +1219,9 @@
     <span class="footer-name">Built by Shaan Agara</span>
   </div>
   <div class="footer-links">
-    <a href="https://github.com/shaan-ad/the-cabinet">GitHub</a>
-    <a href="https://www.linkedin.com/in/shaan-agara/">LinkedIn</a>
-    <a href="https://github.com/shaan-ad/pm-os">Also check out PM-OS</a>
+    <a href="https://github.com/shaan-ad/the-cabinet" target="_blank" rel="noopener noreferrer">GitHub</a>
+    <a href="https://www.linkedin.com/in/shaan-agara/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    <a href="https://github.com/shaan-ad/pm-os" target="_blank" rel="noopener noreferrer">Also check out PM-OS</a>
   </div>
 </footer>
 
@@ -1253,8 +1233,6 @@ document.querySelectorAll('.tab[data-tab]').forEach(function(tab) {
     document.querySelectorAll('.tab-panel').forEach(function(p) { p.classList.remove('active'); });
     tab.classList.add('active');
     document.getElementById('tab-' + tab.dataset.tab).classList.add('active');
-    // Collapse any expanded cards when switching tabs
-    document.querySelectorAll('.persona-card.expanded').forEach(function(c) { c.classList.remove('expanded'); });
   });
 });
 
@@ -1267,19 +1245,6 @@ document.querySelectorAll('.install-tab[data-itab]').forEach(function(tab) {
     document.getElementById('itab-' + tab.dataset.itab).classList.add('active');
   });
 });
-
-// Card expand/collapse (accordion)
-function toggleCard(card) {
-  var wasExpanded = card.classList.contains('expanded');
-  // Collapse all cards in the same grid
-  card.closest('.persona-grid').querySelectorAll('.persona-card.expanded').forEach(function(c) {
-    c.classList.remove('expanded');
-  });
-  // Toggle the clicked card (if it wasn't already expanded)
-  if (!wasExpanded) {
-    card.classList.add('expanded');
-  }
-}
 
 // Copy to clipboard
 function copyCmd(step) {
