@@ -572,5 +572,230 @@
   </div>
 </section>
 
+<!-- ===== EXPLAINER ===== -->
+<div class="explainer">
+  <p>Point any decision, strategy, or problem at The Cabinet and get perspectives from every leadership angle. A CEO who challenges your vision. A CFO who demands the numbers. A Reality Checker who tears apart your assumptions. Pure markdown. Zero code. Install in two commands.</p>
+</div>
+
+<!-- ===== PERSONA GRID ===== -->
+<section class="section">
+  <div class="section-header">
+    <h2 class="section-title">Meet Your Cabinet</h2>
+    <p class="section-sub">Click any persona to see their decision frameworks and signature questions.</p>
+  </div>
+
+  <div class="tabs">
+    <button class="tab active" data-tab="executives">Executives Leadership</button>
+    <button class="tab" data-tab="startup">Startup Cabinet</button>
+    <button class="tab" data-tab="advisors">Startup Advisors</button>
+  </div>
+
+  <!-- EXECUTIVES LEADERSHIP -->
+  <div class="tab-panel active" id="tab-executives">
+    <div class="persona-grid">
+
+      <!-- CEO -->
+      <div class="persona-card" onclick="toggleCard(this)">
+        <div class="persona-header">
+          <div class="persona-icon"><svg viewBox="0 0 24 24"><path d="M12 2L15 8.5L22 9.5L17 14.5L18 21.5L12 18.5L6 21.5L7 14.5L2 9.5L9 8.5L12 2Z"/></svg></div>
+          <div><div class="persona-name">The CEO</div><div class="persona-role">Chief Executive</div></div>
+        </div>
+        <div class="persona-lens">Vision, strategy, and stakeholder alignment. Challenges your thinking on what really matters.</div>
+        <div class="persona-questions-label">Questions they always ask</div>
+        <div class="persona-q">"What would have to be true for this to be a good idea?"</div>
+        <div class="persona-q">"If we say yes to this, what are we saying no to?"</div>
+        <div class="persona-expanded"><div class="persona-expanded-inner">
+          <div class="expanded-label">Frameworks</div>
+          <div class="framework-tags"><span class="framework-tag">Porter's Five Forces</span><span class="framework-tag">2x2 Prioritization</span></div>
+          <div class="expanded-label">Pushes back on</div>
+          <div class="pushback-text">Consensus-seeking that delays action, strategy decks with no trade-offs, vanity metrics</div>
+          <div class="expanded-label">Try it</div>
+          <div class="example-prompt">Run this pricing strategy past the CEO</div>
+        </div></div>
+      </div>
+
+      <!-- CFO -->
+      <div class="persona-card" onclick="toggleCard(this)">
+        <div class="persona-header">
+          <div class="persona-icon"><svg viewBox="0 0 24 24"><path d="M18 20V10M12 20V4M6 20V14"/></svg></div>
+          <div><div class="persona-name">The CFO</div><div class="persona-role">Chief Financial</div></div>
+        </div>
+        <div class="persona-lens">Unit economics, runway, and payback periods. Demands the numbers before any decision moves forward.</div>
+        <div class="persona-questions-label">Questions they always ask</div>
+        <div class="persona-q">"What's the fully-loaded cost, including people-hours?"</div>
+        <div class="persona-q">"If this takes twice as long and costs 50% more, do we still do it?"</div>
+        <div class="persona-expanded"><div class="persona-expanded-inner">
+          <div class="expanded-label">Frameworks</div>
+          <div class="framework-tags"><span class="framework-tag">Three-Scenario Modeling</span><span class="framework-tag">ROI Ranking</span></div>
+          <div class="expanded-label">Pushes back on</div>
+          <div class="pushback-text">Hockey-stick projections with no explanation, conflating revenue with cash</div>
+          <div class="expanded-label">Try it</div>
+          <div class="example-prompt">Have the CFO review our Series A financial model</div>
+        </div></div>
+      </div>
+
+      <!-- CTO -->
+      <div class="persona-card" onclick="toggleCard(this)">
+        <div class="persona-header">
+          <div class="persona-icon"><svg viewBox="0 0 24 24"><path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1Z"/></svg></div>
+          <div><div class="persona-name">The CTO</div><div class="persona-role">Chief Technology</div></div>
+        </div>
+        <div class="persona-lens">Systems thinking, tech debt, and build vs buy. Keeps the technical vision honest and scalable.</div>
+        <div class="persona-questions-label">Questions they always ask</div>
+        <div class="persona-q">"What's the blast radius if this fails?"</div>
+        <div class="persona-q">"Is this essential complexity, or accidental?"</div>
+        <div class="persona-expanded"><div class="persona-expanded-inner">
+          <div class="expanded-label">Frameworks</div>
+          <div class="framework-tags"><span class="framework-tag">Three Horizons of Regret</span><span class="framework-tag">Boring Technology</span></div>
+          <div class="expanded-label">Pushes back on</div>
+          <div class="pushback-text">Resume-driven development, rewrites without a business case, premature optimization</div>
+          <div class="expanded-label">Try it</div>
+          <div class="example-prompt">Ask the CTO to review our architecture decision</div>
+        </div></div>
+      </div>
+
+      <!-- CMO -->
+      <div class="persona-card" onclick="toggleCard(this)">
+        <div class="persona-header">
+          <div class="persona-icon"><svg viewBox="0 0 24 24"><path d="M3 11l18-5v12L3 13v-2Z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg></div>
+          <div><div class="persona-name">The CMO</div><div class="persona-role">Chief Marketing</div></div>
+        </div>
+        <div class="persona-lens">Positioning, demand generation, and buyer psychology. Makes sure the story lands with the right audience.</div>
+        <div class="persona-questions-label">Questions they always ask</div>
+        <div class="persona-q">"Who is the buyer, and what trigger makes them look?"</div>
+        <div class="persona-q">"What do we want the market to believe that they don't?"</div>
+        <div class="persona-expanded"><div class="persona-expanded-inner">
+          <div class="expanded-label">Frameworks</div>
+          <div class="framework-tags"><span class="framework-tag">Dunford Positioning</span><span class="framework-tag">Byron Sharp</span></div>
+          <div class="expanded-label">Pushes back on</div>
+          <div class="pushback-text">Feature-led messaging, launching without a clear ICP</div>
+          <div class="expanded-label">Try it</div>
+          <div class="example-prompt">Get the CMO's take on our launch messaging</div>
+        </div></div>
+      </div>
+
+      <!-- COO -->
+      <div class="persona-card" onclick="toggleCard(this)">
+        <div class="persona-header">
+          <div class="persona-icon"><svg viewBox="0 0 24 24"><path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3"/><path d="M1 14h6M9 8h6M17 16h6"/></svg></div>
+          <div><div class="persona-name">The COO</div><div class="persona-role">Chief Operations</div></div>
+        </div>
+        <div class="persona-lens">Bottlenecks, handoffs, and capacity analysis. Turns strategy into repeatable execution systems.</div>
+        <div class="persona-questions-label">Questions they always ask</div>
+        <div class="persona-q">"Who owns the handoff between these two teams?"</div>
+        <div class="persona-q">"If we doubled volume tomorrow, which process breaks first?"</div>
+        <div class="persona-expanded"><div class="persona-expanded-inner">
+          <div class="expanded-label">Frameworks</div>
+          <div class="framework-tags"><span class="framework-tag">Theory of Constraints</span><span class="framework-tag">Process-People-Tools</span></div>
+          <div class="expanded-label">Pushes back on</div>
+          <div class="pushback-text">Adding headcount before fixing the process, celebrating heroics instead of systems</div>
+          <div class="expanded-label">Try it</div>
+          <div class="example-prompt">Have the COO audit our onboarding workflow</div>
+        </div></div>
+      </div>
+
+      <!-- CPO -->
+      <div class="persona-card" onclick="toggleCard(this)">
+        <div class="persona-header">
+          <div class="persona-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
+          <div><div class="persona-name">The CPO</div><div class="persona-role">Chief Product</div></div>
+        </div>
+        <div class="persona-lens">User problems, prioritization, and continuous product-market fit. Relentlessly focused on what users actually need.</div>
+        <div class="persona-questions-label">Questions they always ask</div>
+        <div class="persona-q">"What user problem are we solving, and how do we know it's real?"</div>
+        <div class="persona-q">"What's the smallest version that lets us learn?"</div>
+        <div class="persona-expanded"><div class="persona-expanded-inner">
+          <div class="expanded-label">Frameworks</div>
+          <div class="framework-tags"><span class="framework-tag">Modified RICE</span><span class="framework-tag">Opportunity Solution Tree</span><span class="framework-tag">Kano Model</span></div>
+          <div class="expanded-label">Pushes back on</div>
+          <div class="pushback-text">Solutions disguised as problems, roadmaps as feature lists, skipping discovery</div>
+          <div class="expanded-label">Try it</div>
+          <div class="example-prompt">Ask the CPO to prioritize our backlog</div>
+        </div></div>
+      </div>
+
+      <!-- CHRO -->
+      <div class="persona-card" onclick="toggleCard(this)">
+        <div class="persona-header">
+          <div class="persona-icon"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+          <div><div class="persona-name">The CHRO</div><div class="persona-role">Chief People</div></div>
+        </div>
+        <div class="persona-lens">Org health, hiring quality, and retention signals. Builds culture through decisions, not perks.</div>
+        <div class="persona-questions-label">Questions they always ask</div>
+        <div class="persona-q">"If this person left tomorrow, what would break?"</div>
+        <div class="persona-q">"Are we hiring for the role we need in 12 months?"</div>
+        <div class="persona-expanded"><div class="persona-expanded-inner">
+          <div class="expanded-label">Frameworks</div>
+          <div class="framework-tags"><span class="framework-tag">Lencioni's Five Dysfunctions</span><span class="framework-tag">"Who" Scorecards</span></div>
+          <div class="expanded-label">Pushes back on</div>
+          <div class="pushback-text">Hiring for speed over quality, promoting ICs into management without training, culture as perks</div>
+          <div class="expanded-label">Try it</div>
+          <div class="example-prompt">Ask the CHRO about our hiring strategy</div>
+        </div></div>
+      </div>
+
+      <!-- General Counsel -->
+      <div class="persona-card" onclick="toggleCard(this)">
+        <div class="persona-header">
+          <div class="persona-icon"><svg viewBox="0 0 24 24"><path d="M12 3v18"/><path d="M5 6l7-3 7 3"/><path d="M5 6v6c0 1.5-2 3-2 3h4s-2-1.5-2-3V6Z"/><path d="M19 6v6c0 1.5 2 3 2 3h-4s2-1.5 2-3V6Z"/></svg></div>
+          <div><div class="persona-name">General Counsel</div><div class="persona-role">Legal</div></div>
+        </div>
+        <div class="persona-lens">Risk translation, contract infrastructure, IP protection, and compliance.</div>
+        <div class="persona-questions-label">Questions they always ask</div>
+        <div class="persona-q">"If this goes wrong, what's the worst-case financial exposure?"</div>
+        <div class="persona-q">"What precedent does this set?"</div>
+        <div class="persona-expanded"><div class="persona-expanded-inner">
+          <div class="expanded-label">Frameworks</div>
+          <div class="framework-tags"><span class="framework-tag">Probability-Impact Matrix</span><span class="framework-tag">Contract Position Tiers</span></div>
+          <div class="expanded-label">Pushes back on</div>
+          <div class="pushback-text">Verbal agreements, skipping legal review to "move fast," open-source without license review</div>
+          <div class="expanded-label">Try it</div>
+          <div class="example-prompt">Have General Counsel review this partnership agreement</div>
+        </div></div>
+      </div>
+
+      <!-- Chief of Staff -->
+      <div class="persona-card" onclick="toggleCard(this)">
+        <div class="persona-header">
+          <div class="persona-icon"><svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></div>
+          <div><div class="persona-name">Chief of Staff</div><div class="persona-role">Execution</div></div>
+        </div>
+        <div class="persona-lens">Decision hygiene, cross-functional gaps, and execution follow-through.</div>
+        <div class="persona-questions-label">Questions they always ask</div>
+        <div class="persona-q">"Has this decision been communicated to people who need to act?"</div>
+        <div class="persona-q">"Are we aligned, or are we just being polite?"</div>
+        <div class="persona-expanded"><div class="persona-expanded-inner">
+          <div class="expanded-label">Frameworks</div>
+          <div class="framework-tags"><span class="framework-tag">Five-Point Decision Docs</span><span class="framework-tag">Meeting Taxonomy</span></div>
+          <div class="expanded-label">Pushes back on</div>
+          <div class="pushback-text">Meetings without agendas, action items without owners, strategy without follow-through</div>
+          <div class="expanded-label">Try it</div>
+          <div class="example-prompt">Ask the Chief of Staff to audit our decision process</div>
+        </div></div>
+      </div>
+
+      <!-- Board Advisor -->
+      <div class="persona-card" onclick="toggleCard(this)">
+        <div class="persona-header">
+          <div class="persona-icon"><svg viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/><path d="M9 9h1M9 13h1M9 17h1"/></svg></div>
+          <div><div class="persona-name">Board Advisor</div><div class="persona-role">Governance</div></div>
+        </div>
+        <div class="persona-lens">Promises vs performance, capital allocation, and risk oversight.</div>
+        <div class="persona-questions-label">Questions they always ask</div>
+        <div class="persona-q">"If I were an outside investor, what would concern me?"</div>
+        <div class="persona-q">"Which assumption, if wrong, most changes the outcome?"</div>
+        <div class="persona-expanded"><div class="persona-expanded-inner">
+          <div class="expanded-label">Frameworks</div>
+          <div class="framework-tags"><span class="framework-tag">Promises vs Performance</span><span class="framework-tag">Buffett Capital Allocation</span></div>
+          <div class="expanded-label">Pushes back on</div>
+          <div class="pushback-text">Narrative drift, vanity metrics in board decks, expansion without proving the core</div>
+          <div class="expanded-label">Try it</div>
+          <div class="example-prompt">Get the Board Advisor's take on our annual plan</div>
+        </div></div>
+      </div>
+
+    </div>
+  </div>
+
 </body>
 </html>
