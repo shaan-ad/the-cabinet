@@ -1245,5 +1245,56 @@
   </div>
 </footer>
 
+<script>
+// Tab switching (persona grid)
+document.querySelectorAll('.tab[data-tab]').forEach(function(tab) {
+  tab.addEventListener('click', function() {
+    document.querySelectorAll('.tab[data-tab]').forEach(function(t) { t.classList.remove('active'); });
+    document.querySelectorAll('.tab-panel').forEach(function(p) { p.classList.remove('active'); });
+    tab.classList.add('active');
+    document.getElementById('tab-' + tab.dataset.tab).classList.add('active');
+    // Collapse any expanded cards when switching tabs
+    document.querySelectorAll('.persona-card.expanded').forEach(function(c) { c.classList.remove('expanded'); });
+  });
+});
+
+// Install tabs (how it works section)
+document.querySelectorAll('.install-tab[data-itab]').forEach(function(tab) {
+  tab.addEventListener('click', function() {
+    document.querySelectorAll('.install-tab').forEach(function(t) { t.classList.remove('active'); });
+    document.querySelectorAll('.install-panel').forEach(function(p) { p.classList.remove('active'); });
+    tab.classList.add('active');
+    document.getElementById('itab-' + tab.dataset.itab).classList.add('active');
+  });
+});
+
+// Card expand/collapse (accordion)
+function toggleCard(card) {
+  var wasExpanded = card.classList.contains('expanded');
+  // Collapse all cards in the same grid
+  card.closest('.persona-grid').querySelectorAll('.persona-card.expanded').forEach(function(c) {
+    c.classList.remove('expanded');
+  });
+  // Toggle the clicked card (if it wasn't already expanded)
+  if (!wasExpanded) {
+    card.classList.add('expanded');
+  }
+}
+
+// Copy to clipboard
+function copyCmd(step) {
+  var cmd = step.querySelector('.install-cmd').textContent;
+  var btn = step.querySelector('.install-copy');
+  navigator.clipboard.writeText(cmd).then(function() {
+    btn.classList.add('copied');
+    btn.innerHTML = '&#10003;';
+    setTimeout(function() {
+      btn.classList.remove('copied');
+      btn.innerHTML = '&#128203;';
+    }, 2000);
+  });
+}
+</script>
+
 </body>
 </html>
