@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Cabinet - 26 AI Executive Personas for Claude Code</title>
 <meta name="description" content="26 AI executive personas for Claude Code. Every leader needs a cabinet. Get perspectives from every leadership angle.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' fill='none' stroke='%237c3aed' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 22L7 10l5 5 4-8 4 8 5-5 3 12z'/%3E%3Crect x='4' y='23' width='24' height='3' rx='1'/%3E%3Ccircle cx='7' cy='9' r='1.5' fill='%237c3aed' stroke='none'/%3E%3Ccircle cx='16' cy='6' r='1.5' fill='%237c3aed' stroke='none'/%3E%3Ccircle cx='25' cy='9' r='1.5' fill='%237c3aed' stroke='none'/%3E%3C/svg%3E">
 <style>
   /* ===== RESET & BASE ===== */
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -60,6 +61,23 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+  }
+  .hero-crown {
+    width: 40px;
+    height: 40px;
+    vertical-align: middle;
+    stroke: #c4b5fd;
+    stroke-width: 1.5;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    display: inline-block;
+    margin: 0 8px;
+    opacity: 0.7;
+    -webkit-text-fill-color: initial;
+    -webkit-background-clip: initial;
+    background-clip: initial;
+    background: none;
   }
   .hero .tagline {
     font-size: 20px;
@@ -509,6 +527,7 @@
   }
   @media (max-width: 640px) {
     .hero h1 { font-size: 40px; letter-spacing: -1.5px; }
+    .hero-crown { width: 24px; height: 24px; margin: 0 4px; }
     .hero .tagline { font-size: 17px; }
     .hero { min-height: 70vh; padding: 60px 20px; }
     .persona-grid { grid-template-columns: 1fr; }
@@ -530,7 +549,7 @@
 <!-- ===== HERO ===== -->
 <section class="hero">
   <div class="hero-content">
-    <h1>The Cabinet</h1>
+    <h1><svg class="hero-crown" viewBox="0 0 32 32" aria-hidden="true"><path d="M4 22L7 10l5 5 4-8 4 8 5-5 3 12z"/><rect x="4" y="23" width="24" height="3" rx="1"/><circle cx="7" cy="9" r="1.5" fill="#c4b5fd" stroke="none"/><circle cx="16" cy="6" r="1.5" fill="#c4b5fd" stroke="none"/><circle cx="25" cy="9" r="1.5" fill="#c4b5fd" stroke="none"/></svg> The Cabinet <svg class="hero-crown" viewBox="0 0 32 32" aria-hidden="true"><path d="M4 22L7 10l5 5 4-8 4 8 5-5 3 12z"/><rect x="4" y="23" width="24" height="3" rx="1"/><circle cx="7" cy="9" r="1.5" fill="#c4b5fd" stroke="none"/><circle cx="16" cy="6" r="1.5" fill="#c4b5fd" stroke="none"/><circle cx="25" cy="9" r="1.5" fill="#c4b5fd" stroke="none"/></svg></h1>
     <p class="tagline">26 AI executive personas for Claude Code and Cowork.<br><strong>Every leader needs a cabinet.</strong></p>
     <div class="install-box">
       <div class="install-step" onclick="copyCmd(this)">
