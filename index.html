@@ -797,5 +797,341 @@
     </div>
   </div>
 
+  <!-- STARTUP CABINET -->
+  <div class="tab-panel" id="tab-startup">
+    <div class="persona-grid">
+
+      <!-- Technical Cofounder -->
+      <div class="persona-card" onclick="toggleCard(this)">
+        <div class="persona-header">
+          <div class="persona-icon"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76Z"/></svg></div>
+          <div><div class="persona-name">Technical Cofounder</div><div class="persona-role">Engineering</div></div>
+        </div>
+        <div class="persona-lens">MVP scope, shipping cadence, and reversibility. Ships before you're comfortable.</div>
+        <div class="persona-questions-label">Questions they always ask</div>
+        <div class="persona-q">"If we had to ship by Friday, what would we cut?"</div>
+        <div class="persona-q">"Is this a reversible or irreversible decision?"</div>
+        <div class="persona-expanded"><div class="persona-expanded-inner">
+          <div class="expanded-label">Frameworks</div>
+          <div class="framework-tags"><span class="framework-tag">Reversibility Test</span><span class="framework-tag">Boring Technology</span></div>
+          <div class="expanded-label">Pushes back on</div>
+          <div class="pushback-text">Microservices before PMF, custom infrastructure before Series A</div>
+          <div class="expanded-label">Try it</div>
+          <div class="example-prompt">Ask the Technical Cofounder to scope our MVP</div>
+        </div></div>
+      </div>
+
+      <!-- Growth Lead -->
+      <div class="persona-card" onclick="toggleCard(this)">
+        <div class="persona-header">
+          <div class="persona-icon"><svg viewBox="0 0 24 24"><path d="M23 6l-9.5 9.5-5-5L1 18"/><path d="M17 6h6v6"/></svg></div>
+          <div><div class="persona-name">Growth Lead</div><div class="persona-role">Acquisition</div></div>
+        </div>
+        <div class="persona-lens">CAC/payback, activation metrics, and cohort retention. Obsessed with the first 1,000 users.</div>
+        <div class="persona-questions-label">Questions they always ask</div>
+        <div class="persona-q">"What's our activation metric, and what % hit it in first session?"</div>
+        <div class="persona-q">"Which channel brought our best-retained users?"</div>
+        <div class="persona-expanded"><div class="persona-expanded-inner">
+          <div class="expanded-label">Frameworks</div>
+          <div class="framework-tags"><span class="framework-tag">ICE Framework</span><span class="framework-tag">Bullseye Framework</span></div>
+          <div class="expanded-label">Pushes back on</div>
+          <div class="pushback-text">"We need more traffic" before fixing conversion, scaling paid ads before activation is solved</div>
+          <div class="expanded-label">Try it</div>
+          <div class="example-prompt">Get the Growth Lead to review our acquisition funnel</div>
+        </div></div>
+      </div>
+
+      <!-- Investor Relations -->
+      <div class="persona-card" onclick="toggleCard(this)">
+        <div class="persona-header">
+          <div class="persona-icon"><svg viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+          <div><div class="persona-name">Investor Relations</div><div class="persona-role">Fundraising</div></div>
+        </div>
+        <div class="persona-lens">Fundraising readiness, term sheets, and milestone-driven raises.</div>
+        <div class="persona-questions-label">Questions they always ask</div>
+        <div class="persona-q">"What milestone will this capital help you reach?"</div>
+        <div class="persona-q">"What metric in your deck makes an investor lean forward?"</div>
+        <div class="persona-expanded"><div class="persona-expanded-inner">
+          <div class="expanded-label">Frameworks</div>
+          <div class="framework-tags"><span class="framework-tag">Three Pillars Readiness</span><span class="framework-tag">Tiered Investor Targeting</span></div>
+          <div class="expanded-label">Pushes back on</div>
+          <div class="pushback-text">Raising too early, valuation obsession over clean terms</div>
+          <div class="expanded-label">Try it</div>
+          <div class="example-prompt">Have Investor Relations prep our fundraising narrative</div>
+        </div></div>
+      </div>
+
+      <!-- Startup Lawyer -->
+      <div class="persona-card" onclick="toggleCard(this)">
+        <div class="persona-header">
+          <div class="persona-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/><path d="M16 13H8M16 17H8M10 9H8"/></svg></div>
+          <div><div class="persona-name">Startup Lawyer</div><div class="persona-role">Legal</div></div>
+        </div>
+        <div class="persona-lens">Severity vs reversibility of legal decisions, clean cap tables, IP ownership.</div>
+        <div class="persona-questions-label">Questions they always ask</div>
+        <div class="persona-q">"Do you have signed IP assignment from everyone who wrote code?"</div>
+        <div class="persona-q">"What is your co-founder vesting schedule?"</div>
+        <div class="persona-expanded"><div class="persona-expanded-inner">
+          <div class="expanded-label">Frameworks</div>
+          <div class="framework-tags"><span class="framework-tag">Severity vs Reversibility</span><span class="framework-tag">Slicing Pie</span></div>
+          <div class="expanded-label">Pushes back on</div>
+          <div class="pushback-text">Handshake agreements, 50/50 splits without vesting, skipping IP assignment</div>
+          <div class="expanded-label">Try it</div>
+          <div class="example-prompt">Ask the Startup Lawyer to review our co-founder agreement</div>
+        </div></div>
+      </div>
+
+      <!-- Product Designer -->
+      <div class="persona-card" onclick="toggleCard(this)">
+        <div class="persona-header">
+          <div class="persona-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div>
+          <div><div class="persona-name">Product Designer</div><div class="persona-role">UX/Design</div></div>
+        </div>
+        <div class="persona-lens">Time-to-value, progressive disclosure, one job per screen. Fights feature bloat.</div>
+        <div class="persona-questions-label">Questions they always ask</div>
+        <div class="persona-q">"What is the user trying to accomplish, in one sentence?"</div>
+        <div class="persona-q">"What happens if we remove this element?"</div>
+        <div class="persona-expanded"><div class="persona-expanded-inner">
+          <div class="expanded-label">Frameworks</div>
+          <div class="framework-tags"><span class="framework-tag">Nielsen's Heuristics</span><span class="framework-tag">Five-Second Test</span><span class="framework-tag">Fitts's Law</span></div>
+          <div class="expanded-label">Pushes back on</div>
+          <div class="pushback-text">Feature additions that compromise clarity, pixel-perfect polish before flow is validated</div>
+          <div class="expanded-label">Try it</div>
+          <div class="example-prompt">Get the Product Designer to review our onboarding flow</div>
+        </div></div>
+      </div>
+
+      <!-- Customer Success -->
+      <div class="persona-card" onclick="toggleCard(this)">
+        <div class="persona-header">
+          <div class="persona-icon"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78Z"/></svg></div>
+          <div><div class="persona-name">Customer Success</div><div class="persona-role">Retention</div></div>
+        </div>
+        <div class="persona-lens">Onboarding completion, health scoring, time-to-value, and churn root causes.</div>
+        <div class="persona-questions-label">Questions they always ask</div>
+        <div class="persona-q">"What does 'success' look like for this customer?"</div>
+        <div class="persona-q">"Which customers are going quiet?"</div>
+        <div class="persona-expanded"><div class="persona-expanded-inner">
+          <div class="expanded-label">Frameworks</div>
+          <div class="framework-tags"><span class="framework-tag">Health Score Model</span><span class="framework-tag">"First Value" Framework</span></div>
+          <div class="expanded-label">Pushes back on</div>
+          <div class="pushback-text">Treating CS as a support alias, adding features to reduce churn before checking adoption</div>
+          <div class="expanded-label">Try it</div>
+          <div class="example-prompt">Have Customer Success analyze our churn patterns</div>
+        </div></div>
+      </div>
+
+      <!-- Data Analyst -->
+      <div class="persona-card" onclick="toggleCard(this)">
+        <div class="persona-header">
+          <div class="persona-icon"><svg viewBox="0 0 24 24"><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5c0 1.66 4 3 9 3s9-1.34 9-3"/><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/><path d="M3 12v7c0 1.66 4 3 9 3s9-1.34 9-3v-7"/></svg></div>
+          <div><div class="persona-name">Data Analyst</div><div class="persona-role">Metrics</div></div>
+        </div>
+        <div class="persona-lens">North Star metric hierarchy, cohort vs aggregate, statistical rigor.</div>
+        <div class="persona-questions-label">Questions they always ask</div>
+        <div class="persona-q">"What decision will this metric help you make?"</div>
+        <div class="persona-q">"Are we looking at cohort view or aggregate?"</div>
+        <div class="persona-expanded"><div class="persona-expanded-inner">
+          <div class="expanded-label">Frameworks</div>
+          <div class="framework-tags"><span class="framework-tag">Metrics Hierarchy</span><span class="framework-tag">Glanceable, Explorable, Actionable</span></div>
+          <div class="expanded-label">Pushes back on</div>
+          <div class="pushback-text">Averages without distributions, calling A/B tests early, dashboard sprawl</div>
+          <div class="expanded-label">Try it</div>
+          <div class="example-prompt">Ask the Data Analyst to review our metrics dashboard</div>
+        </div></div>
+      </div>
+
+      <!-- Content Strategist -->
+      <div class="persona-card" onclick="toggleCard(this)">
+        <div class="persona-header">
+          <div class="persona-icon"><svg viewBox="0 0 24 24"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg></div>
+          <div><div class="persona-name">Content Strategist</div><div class="persona-role">Brand</div></div>
+        </div>
+        <div class="persona-lens">Unique point of view, founder voice, and distribution over creation.</div>
+        <div class="persona-questions-label">Questions they always ask</div>
+        <div class="persona-q">"What does this company believe that competitors do not?"</div>
+        <div class="persona-q">"Could I tell which company this is with the logo hidden?"</div>
+        <div class="persona-expanded"><div class="persona-expanded-inner">
+          <div class="expanded-label">Frameworks</div>
+          <div class="framework-tags"><span class="framework-tag">POV Audit</span><span class="framework-tag">Obviously Awesome</span><span class="framework-tag">1-to-7 Distribution</span></div>
+          <div class="expanded-label">Pushes back on</div>
+          <div class="pushback-text">Generic content any competitor could publish, committees editing founder voice into blandness</div>
+          <div class="expanded-label">Try it</div>
+          <div class="example-prompt">Get the Content Strategist to sharpen our positioning</div>
+        </div></div>
+      </div>
+
+      <!-- DevOps Lead -->
+      <div class="persona-card" onclick="toggleCard(this)">
+        <div class="persona-header">
+          <div class="persona-icon"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><path d="M6 6h.01M6 18h.01"/></svg></div>
+          <div><div class="persona-name">DevOps Lead</div><div class="persona-role">Infrastructure</div></div>
+        </div>
+        <div class="persona-lens">Operational burden, managed services first, progressive delivery.</div>
+        <div class="persona-questions-label">Questions they always ask</div>
+        <div class="persona-q">"What is our rollback plan if this deployment breaks?"</div>
+        <div class="persona-q">"If we get 10x traffic tomorrow, what breaks first?"</div>
+        <div class="persona-expanded"><div class="persona-expanded-inner">
+          <div class="expanded-label">Frameworks</div>
+          <div class="framework-tags"><span class="framework-tag">Operational Burden</span><span class="framework-tag">Managed Services First</span><span class="framework-tag">Three Pillars</span></div>
+          <div class="expanded-label">Pushes back on</div>
+          <div class="pushback-text">Kubernetes before 10 engineers, "We will add monitoring later"</div>
+          <div class="expanded-label">Try it</div>
+          <div class="example-prompt">Have the DevOps Lead review our deployment pipeline</div>
+        </div></div>
+      </div>
+
+      <!-- Angel Investor -->
+      <div class="persona-card" onclick="toggleCard(this)">
+        <div class="persona-header">
+          <div class="persona-icon"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8Z"/><circle cx="12" cy="12" r="3"/></svg></div>
+          <div><div class="persona-name">Angel Investor</div><div class="persona-role">Advisory</div></div>
+        </div>
+        <div class="persona-lens">Founder-market fit, timing, market structure, and organic pull signals.</div>
+        <div class="persona-questions-label">Questions they always ask</div>
+        <div class="persona-q">"What is the contrarian belief embedded in this company?"</div>
+        <div class="persona-q">"If a competitor copied your product, what would you still have?"</div>
+        <div class="persona-expanded"><div class="persona-expanded-inner">
+          <div class="expanded-label">Frameworks</div>
+          <div class="framework-tags"><span class="framework-tag">Founder-Market Fit</span><span class="framework-tag">"Kill the Company"</span></div>
+          <div class="expanded-label">Pushes back on</div>
+          <div class="pushback-text">"We have no competition," top-down TAM slides</div>
+          <div class="expanded-label">Try it</div>
+          <div class="example-prompt">Get the Angel Investor's read on our market timing</div>
+        </div></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- STARTUP ADVISORS -->
+  <div class="tab-panel" id="tab-advisors">
+    <div class="persona-grid">
+
+      <!-- VC Partner -->
+      <div class="persona-card" onclick="toggleCard(this)">
+        <div class="persona-header">
+          <div class="persona-icon"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8Z"/></svg></div>
+          <div><div class="persona-name">VC Partner</div><div class="persona-role">Investment</div></div>
+        </div>
+        <div class="persona-lens">Power Law outcomes, bottom-up TAM, defensibility, and burn multiples.</div>
+        <div class="persona-questions-label">Questions they always ask</div>
+        <div class="persona-q">"Walk me through the TAM bottom-up."</div>
+        <div class="persona-q">"Which of Helmer's 7 Powers do you have today?"</div>
+        <div class="persona-expanded"><div class="persona-expanded-inner">
+          <div class="expanded-label">Frameworks</div>
+          <div class="framework-tags"><span class="framework-tag">Rachleff Market-Team</span><span class="framework-tag">Helmer 7 Powers</span></div>
+          <div class="expanded-label">Pushes back on</div>
+          <div class="pushback-text">Top-down TAM, defensibility claims based on "execution" or "speed"</div>
+          <div class="expanded-label">Try it</div>
+          <div class="example-prompt">Have the VC Partner pressure-test our pitch deck</div>
+        </div></div>
+      </div>
+
+      <!-- Executive Coach -->
+      <div class="persona-card" onclick="toggleCard(this)">
+        <div class="persona-header">
+          <div class="persona-icon"><svg viewBox="0 0 24 24"><path d="M12 3C7.5 3 4 5.5 4 9c0 2.5 1.5 4.5 4 5.5V21h8v-6.5c2.5-1 4-3 4-5.5 0-3.5-3.5-6-8-6Z"/><path d="M9 21h6"/></svg></div>
+          <div><div class="persona-name">Executive Coach</div><div class="persona-role">Leadership</div></div>
+        </div>
+        <div class="persona-lens">Avoidance patterns, identity tasks, delegation bottlenecks.</div>
+        <div class="persona-questions-label">Questions they always ask</div>
+        <div class="persona-q">"What conversation have you been putting off?"</div>
+        <div class="persona-q">"You describe this as a team problem. What if it's a you problem?"</div>
+        <div class="persona-expanded"><div class="persona-expanded-inner">
+          <div class="expanded-label">Frameworks</div>
+          <div class="framework-tags"><span class="framework-tag">Kegan's Adult Development</span><span class="framework-tag">Johari Window</span></div>
+          <div class="expanded-label">Pushes back on</div>
+          <div class="pushback-text">Blaming the team for problems that trace to leadership, confusing busy with effective</div>
+          <div class="expanded-label">Try it</div>
+          <div class="example-prompt">Have the Executive Coach assess my leadership blind spots</div>
+        </div></div>
+      </div>
+
+      <!-- Crisis Manager -->
+      <div class="persona-card" onclick="toggleCard(this)">
+        <div class="persona-header">
+          <div class="persona-icon"><svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0Z"/><path d="M12 9v4M12 17h.01"/></svg></div>
+          <div><div class="persona-name">Crisis Manager</div><div class="persona-role">Risk</div></div>
+        </div>
+        <div class="persona-lens">Pre-mortem planning, communication speed, single points of failure.</div>
+        <div class="persona-questions-label">Questions they always ask</div>
+        <div class="persona-q">"If this goes wrong, what does the headline look like?"</div>
+        <div class="persona-q">"Who owns crisis communication right now?"</div>
+        <div class="persona-expanded"><div class="persona-expanded-inner">
+          <div class="expanded-label">Frameworks</div>
+          <div class="framework-tags"><span class="framework-tag">Cynefin Framework</span><span class="framework-tag">Shell Scenario Methodology</span></div>
+          <div class="expanded-label">Pushes back on</div>
+          <div class="pushback-text">"That will never happen to us," crisis plans nobody has tested</div>
+          <div class="expanded-label">Try it</div>
+          <div class="example-prompt">Ask the Crisis Manager to run a pre-mortem on our launch</div>
+        </div></div>
+      </div>
+
+      <!-- M&A Advisor -->
+      <div class="persona-card" onclick="toggleCard(this)">
+        <div class="persona-header">
+          <div class="persona-icon"><svg viewBox="0 0 24 24"><path d="M17 11h4a2 2 0 0 1 0 4h-4"/><path d="M3 11h4a2 2 0 0 1 0 4H3"/><path d="M12 2v4M12 18v4"/><circle cx="12" cy="11" r="4"/></svg></div>
+          <div><div class="persona-name">M&amp;A Advisor</div><div class="persona-role">Corporate Dev</div></div>
+        </div>
+        <div class="persona-lens">Build vs buy time-value, synergy realization rates, deal structure.</div>
+        <div class="persona-questions-label">Questions they always ask</div>
+        <div class="persona-q">"If you could not acquire this, what would it cost to build?"</div>
+        <div class="persona-q">"Walk me through the synergy math line by line."</div>
+        <div class="persona-expanded"><div class="persona-expanded-inner">
+          <div class="expanded-label">Frameworks</div>
+          <div class="framework-tags"><span class="framework-tag">Valuation Triangulation</span><span class="framework-tag">Synergy Haircuts</span></div>
+          <div class="expanded-label">Pushes back on</div>
+          <div class="pushback-text">"Strategic premium" justifying overpayment, deals driven by ego</div>
+          <div class="expanded-label">Try it</div>
+          <div class="example-prompt">Have the M&amp;A Advisor evaluate this acquisition target</div>
+        </div></div>
+      </div>
+
+      <!-- AI Strategist -->
+      <div class="persona-card" onclick="toggleCard(this)">
+        <div class="persona-header">
+          <div class="persona-icon"><svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 3 2 5.5 4 7.5.5.5 1 1.5 1 2.5h4c0-1 .5-2 1-2.5 2-2 4-4.5 4-7.5a7 7 0 0 0-7-7Z"/><path d="M9 22h6M10 2v1M14 2v1M5.5 5.5l.7.7M18.5 5.5l-.7.7"/></svg></div>
+          <div><div class="persona-name">AI Strategist</div><div class="persona-role">Technology</div></div>
+        </div>
+        <div class="persona-lens">Business impact vs feasibility, data readiness, build vs buy AI.</div>
+        <div class="persona-questions-label">Questions they always ask</div>
+        <div class="persona-q">"What business metric will this AI project move, and by how much?"</div>
+        <div class="persona-q">"Is this a moat or a wrapper any competitor could replicate?"</div>
+        <div class="persona-expanded"><div class="persona-expanded-inner">
+          <div class="expanded-label">Frameworks</div>
+          <div class="framework-tags"><span class="framework-tag">2x2 Impact/Feasibility</span><span class="framework-tag">AI Readiness Dimensions</span></div>
+          <div class="expanded-label">Pushes back on</div>
+          <div class="pushback-text">"AI-first" strategies without use cases, demo-driven development, ignoring inference costs</div>
+          <div class="expanded-label">Try it</div>
+          <div class="example-prompt">Ask the AI Strategist to evaluate our AI use cases</div>
+        </div></div>
+      </div>
+
+      <!-- Reality Checker -->
+      <div class="persona-card" onclick="toggleCard(this)">
+        <div class="persona-header">
+          <div class="persona-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="7"/><path d="M8.21 13.89L7 23l5-3 5 3-1.21-9.12"/></svg></div>
+          <div><div class="persona-name">Reality Checker</div><div class="persona-role">Devil's Advocate</div></div>
+        </div>
+        <div class="persona-lens">Epistemic rigor, cognitive bias catalog, evidence vs narrative.</div>
+        <div class="persona-questions-label">Questions they always ask</div>
+        <div class="persona-q">"What would have to be true for this to fail?"</div>
+        <div class="persona-q">"Strip the narrative. What raw data points does this plan rest on?"</div>
+        <div class="persona-expanded"><div class="persona-expanded-inner">
+          <div class="expanded-label">Frameworks</div>
+          <div class="framework-tags"><span class="framework-tag">Epistemic Rigor Hierarchy</span><span class="framework-tag">"Steel Man, Then Destroy"</span></div>
+          <div class="expanded-label">Pushes back on</div>
+          <div class="pushback-text">Consensus without visible dissent, plans assuming best-case execution across every dimension</div>
+          <div class="expanded-label">Try it</div>
+          <div class="example-prompt">Get the Reality Checker to tear apart our Q3 plan</div>
+        </div></div>
+      </div>
+
+    </div>
+  </div>
+
+</section>
+
 </body>
 </html>
