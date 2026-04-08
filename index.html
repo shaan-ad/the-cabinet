@@ -156,6 +156,41 @@
     margin-top: 6px;
   }
 
+  /* ===== HERO BUTTONS ===== */
+  .hero-buttons {
+    display: flex;
+    gap: 16px;
+    margin-top: 40px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .btn {
+    padding: 14px 28px;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .btn-primary {
+    background: linear-gradient(135deg, #7c3aed, #6d28d9);
+    color: white;
+  }
+  .btn-primary:hover {
+    background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+    transform: translateY(-1px);
+  }
+  .btn-secondary {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    color: #c4b5fd;
+  }
+  .btn-secondary:hover {
+    background: rgba(139,92,246,0.1);
+    border-color: rgba(139,92,246,0.3);
+    transform: translateY(-1px);
+  }
+
   /* ===== SECTION ===== */
   .section {
     padding: 80px 24px;
@@ -568,6 +603,10 @@
       <div class="stat"><div class="stat-num">180+</div><div class="stat-label">Questions</div></div>
       <div class="stat"><div class="stat-num">50+</div><div class="stat-label">Frameworks</div></div>
     </div>
+    <div class="hero-buttons">
+      <a href="https://github.com/shaan-ad/the-cabinet" target="_blank" rel="noopener noreferrer" class="btn btn-primary">View on GitHub</a>
+      <a href="#meet-your-cabinet" class="btn btn-secondary">Meet Your Cabinet</a>
+    </div>
   </div>
 </section>
 
@@ -579,7 +618,7 @@
 <!-- ===== PERSONA GRID ===== -->
 <section class="section">
   <div class="section-header">
-    <h2 class="section-title">Meet Your Cabinet</h2>
+    <h2 class="section-title" id="meet-your-cabinet">Meet Your Cabinet</h2>
   </div>
 
   <div class="tabs">
