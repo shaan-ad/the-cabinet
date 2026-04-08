@@ -1133,5 +1133,117 @@
 
 </section>
 
+<!-- ===== HOW IT WORKS ===== -->
+<section class="section">
+  <div class="section-header">
+    <h2 class="section-title">How It Works</h2>
+    <p class="section-sub">Three steps to get executive-level perspectives on any decision.</p>
+  </div>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">Step 1</div>
+      <div class="step-title">Install</div>
+      <div class="step-desc">Two commands. Takes 30 seconds.</div>
+      <div class="step-example">claude plugin marketplace add shaan-ad/the-cabinet<br>claude plugin install the-cabinet</div>
+    </div>
+    <div class="step">
+      <div class="step-num">Step 2</div>
+      <div class="step-title">Ask</div>
+      <div class="step-desc">Point any decision at a specific persona or the full cabinet.</div>
+      <div class="step-example">Run this pricing strategy past the CFO</div>
+    </div>
+    <div class="step">
+      <div class="step-num">Step 3</div>
+      <div class="step-title">Get Perspective</div>
+      <div class="step-desc">Real frameworks. Sharp questions. Honest pushback on your blind spots.</div>
+    </div>
+  </div>
+
+  <div class="install-tabs">
+    <button class="install-tab active" data-itab="cli">Claude Code (CLI)</button>
+    <button class="install-tab" data-itab="cowork">Cowork</button>
+    <button class="install-tab" data-itab="vscode">VS Code / JetBrains</button>
+    <button class="install-tab" data-itab="raw">Raw Markdown</button>
+  </div>
+
+  <div class="install-panel active" id="itab-cli">
+    <code>claude plugin marketplace add shaan-ad/the-cabinet<br>claude plugin install the-cabinet</code>
+  </div>
+  <div class="install-panel" id="itab-cowork">
+    <ol>
+      <li>Download the <a href="https://github.com/shaan-ad/the-cabinet/archive/refs/heads/main.zip" style="color:#a78bfa;">plugin zip</a></li>
+      <li>In Cowork, go to <strong>Customize</strong> &gt; <strong>+</strong> next to Personal plugins</li>
+      <li>Select <strong>Create plugin</strong> &gt; <strong>Upload plugin</strong></li>
+      <li>Upload the zip file</li>
+    </ol>
+  </div>
+  <div class="install-panel" id="itab-vscode">
+    <p>Type <code style="background:rgba(0,0,0,0.3);padding:2px 6px;border-radius:4px;font-size:13px;">/plugins</code> in the Claude Code panel, add <code style="background:rgba(0,0,0,0.3);padding:2px 6px;border-radius:4px;font-size:13px;">shaan-ad/the-cabinet</code> as a marketplace source, then install from the GUI.</p>
+  </div>
+  <div class="install-panel" id="itab-raw">
+    <p>Every persona is a standalone <code style="background:rgba(0,0,0,0.3);padding:2px 6px;border-radius:4px;font-size:13px;">.md</code> file. Open any file in <code style="background:rgba(0,0,0,0.3);padding:2px 6px;border-radius:4px;font-size:13px;">cabinet/</code>, <code style="background:rgba(0,0,0,0.3);padding:2px 6px;border-radius:4px;font-size:13px;">startup/</code>, or <code style="background:rgba(0,0,0,0.3);padding:2px 6px;border-radius:4px;font-size:13px;">advisors/</code>, copy the content, and paste it as a system prompt in ChatGPT, Gemini, or any AI tool.</p>
+  </div>
+</section>
+
+<!-- ===== WHAT MAKES THIS DIFFERENT ===== -->
+<section class="section">
+  <div class="section-header">
+    <h2 class="section-title">What Makes This Different</h2>
+  </div>
+
+  <div class="comparison">
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th>Generic Prompts</th>
+          <th>Prompt Libraries</th>
+          <th>The Cabinet</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Depth</td>
+          <td>Surface-level</td>
+          <td>Template-based</td>
+          <td>800+ words per persona with real frameworks</td>
+        </tr>
+        <tr>
+          <td>Perspective</td>
+          <td>One voice</td>
+          <td>Multiple styles</td>
+          <td>Distinct decision frameworks per role</td>
+        </tr>
+        <tr>
+          <td>Challenge</td>
+          <td>Agrees with you</td>
+          <td>Follows instructions</td>
+          <td>Pushes back on blind spots</td>
+        </tr>
+        <tr>
+          <td>Expertise</td>
+          <td>Generalist</td>
+          <td>Role-aware</td>
+          <td>Named frameworks (DCF, Porter's, Kano, etc.)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="footer-content">
+    <img src="assets/headshot.jpg" alt="Shaan Agara" class="footer-headshot">
+    <span class="footer-name">Built by Shaan Agara</span>
+  </div>
+  <div class="footer-links">
+    <a href="https://github.com/shaan-ad/the-cabinet">GitHub</a>
+    <a href="https://www.linkedin.com/in/shaan-agara/">LinkedIn</a>
+    <a href="https://github.com/shaan-ad/pm-os">Also check out PM-OS</a>
+  </div>
+</footer>
+
 </body>
 </html>
